@@ -7,6 +7,6 @@ COPY . .
 RUN pip install mysql-connector-python
 RUN pip install Flask
 
-EXPOSE 500
+EXPOSE 5000
 
 CMD []
