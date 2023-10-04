@@ -9,4 +9,4 @@ RUN pip install Flask
 
 EXPOSE 5000
 
-CMD []
+CMD ["python3", "api.py"]

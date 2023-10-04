@@ -1,0 +1,19 @@
+services:
+  app:
+    build: ./app
+    ports:
+      - "80:5000"
+    restart: on-failure
+    depends_on:
+      - "db"
+  db:
+    image: mysql
+    expose:
+      - "5010"
+    environment:
+      MYSQL_ROOT_PASSWORD: y6#n9c
+    restart: on-failure
+
+volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - ./db-storage:/var/lib/mysql
