@@ -14,6 +14,6 @@ services:
       MYSQL_ROOT_PASSWORD: y6#n9c
     restart: on-failure
 
-volumes:
-      - ./db:/docker-entrypoint-initdb.d/
-      - ./db-storage:/var/lib/mysql
+# volumes:
+#       - ./db:/docker-entrypoint-initdb.d/
+#       - ./db-storage:/var/lib/mysql
