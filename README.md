@@ -1,8 +1,8 @@
 # cs347-final
 
-Authors: 	Ali Ramazani 
-		Barry Nwike 
-		Peyton Bass 
+Authors: 	Ali Ramazani, 
+		Barry Nwike, 
+		Peyton Bass, 
 		Muno Siyakurima
 
 
