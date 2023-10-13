@@ -45,7 +45,7 @@ def guess_checker(user_guess, password):
                 empty += 1
     hint = correct + false_position + empty
     print("There are ", correct, " correct in the right position")
-    print("There are ", false_position, " in the wrong position ")
+    print("There are ", false_position, " correct in the wrong position ")
     return hint
                 
 
