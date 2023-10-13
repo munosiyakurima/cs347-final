@@ -31,21 +31,21 @@ def valid_moves(user_guess):
 def guess_checker(user_guess, password):
     guess = user_guess.split()
     hint = ""
-    correct = ""
-    false_position = ""
-    empty = ""
+    correct = 0
+    false_position = 0
+    empty = 0
     
     for i in range(max_password_len):
-        if(guess[i].equals(password[i])):
-            correct += "cc"
+        if(guess[i] == password[i]):
+            correct += 1
         else:
             if(guess[i] in password):
-                false_position += "ff"
+                false_position += 1
             else:
-                empty += "e"
+                empty += 1
     hint = correct + false_position + empty
-    print("There are "+ correct.length + " correct")
-    print("There are " + false_position.length + " in the wrong position")
+    print("There are ", correct, " correct in the right position")
+    print("There are ", false_position, " in the wrong position ")
     return hint
                 
 
