@@ -18,41 +18,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 app.secret_key = game_id
 
-# def generate_game_id():
-#     return 0 # temporary
 
-# def create_game():
-#     max_password_len = ""
-#     max_password_attempts = ""
-#     allow_repeats = False 
-#     allow_empty_inputs = ""
-
-#     game_id = ""
-
-#     rules = []
-
-#     return 0 # temporary
-
-
-
-# #Creates a randomized list of colors to act as the game's password
-# def password_generator(max_len, allow_repeats):
-#     password = []
-#     if(allow_repeats):
-#         password = random.sample(COLOR_MASTER, max_len)
-#     else:
-#         for i in range(max_len):
-#             password.append(random.choice(COLOR_MASTER))
-    
-#     return password
-    
-
-
-# def valid_moves(move, max_len):
-#     pass
-
-# def guess_checker():
-#     pass
 
 @app.route('/')
 def home():

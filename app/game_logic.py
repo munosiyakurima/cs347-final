@@ -27,6 +27,7 @@ def valid_moves(user_guess):
         return False
     if user_guess not in COLOR_MASTER:
         return False
+    return True
 
 def guess_checker(user_guess, password):
     guess = user_guess.split()
