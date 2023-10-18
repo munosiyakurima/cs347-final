@@ -3,36 +3,38 @@ html{
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin: 0;
+    margin: 1em 1em;
+    padding: 0;
 }
 
 nav {
     position: fixed;
+    right: 0;
     top: 0;
     margin: 0;
-    padding: 1em 2em;
+    padding: 1.25em 1em;
     width: 100%;
-    overflow: hidden;
+    overflow: overflow;
+    text-align: left;
     background-color: rgb(30, 24, 39);
 }
 
 nav a {
     text-decoration-line: none;
-    margin: 2em;
-    padding: 1em 2em;
+    padding: 1.25em 2em;
     color: rgb(222, 222, 222);
 }
 
-nav a:hover:not(.active) {
+nav a:hover:not(.viewing) {
     /*
     background-color: rgb(155, 151, 151);
     */
     background: rgb(17, 14, 22);
-  }
+}
 
-  .active {
+.viewing {
     background: rgb(159, 106, 161);
-  }
+}
 
 h1 {
     color: rgb(222, 222, 222);
