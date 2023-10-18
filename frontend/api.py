@@ -18,8 +18,6 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 app.secret_key = game_id
 
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
