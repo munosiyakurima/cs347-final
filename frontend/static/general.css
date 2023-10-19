@@ -1,24 +1,26 @@
 /*
-Properties to effect the entire html file
-All sizes are done in relative lengths (mainly 'em' and '%') rather than absolute lengths (px, cm, etc.)
-All colors are in rgb format
+Properties to effect the entire html file.
+All sizes are done in relative lengths (mainly 'em' and '%') rather than absolute lengths (px, cm, mm).
+All colors are in rgb format for a consistent format.
+Most if not all of the spacing is done with padding rather then margins. Margins effect space in relation to
+    objects, while padding effects space in relation to anything within an object. Be careful when adding
+    margins as to not screw with text and image layouts.
 */
 html{
     background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover scroll;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
     color: rgb(222, 222, 222);
-    margin: 2em 0em 0em 0em;
+    padding: 2em 0em 0em 0em;
 }
 
 /*
-Properties for the navigation element and its attributes
+Properties for the navigation element and its attributes.
 */
 nav {
     position: fixed;
     right: 0;
     top: 0;
-    margin: 0;
     padding: 1.5em 1em;
     width: 100%;
     overflow: hidden;
@@ -41,7 +43,7 @@ nav a:hover:not(.viewing) {
 }
 
 /*
-Properties for headers
+Properties for headers.
 */
 h1 {
     color: rgb(222, 222, 222);
@@ -61,22 +63,17 @@ h3 {
 }
 
 /*
-Properties for p elements
+Properties for p elements adn their classes.
 */
 p.home-p {
     font-size: 1.25em;
 }
 
 /*
-Properties for div elements
+Properties for div elements and their classes/attributes.
 */
 div.home-mm, div.home-guess, div.home-customize {
-    padding: 6em 0;
-    margin: 2em;
+    padding: 8em 4em;
     text-align: left;
     
 }
-
-/*
-Properties for img elements
-*/
