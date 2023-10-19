@@ -1,12 +1,20 @@
+/*
+Properties to effect the entire html file
+All sizes are done in relative lengths (mainly 'em') rather than absolute lengths (px, cm, etc.)
+All colors are in rgb format
+*/
 html{
-    background: linear-gradient(rgb(74, 80, 100), rgb(64, 54, 80)) no-repeat center fixed;
-    background-size: cover;
+    background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover fixed;
+    background-blend-mode: normal;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin: 1em 1em;
+    margin: 1em 0em;
     padding: 0;
 }
 
+/*
+Properties for the navigation element and its attributes
+*/
 nav {
     position: fixed;
     right: 0;
@@ -16,7 +24,7 @@ nav {
     width: 100%;
     overflow: overflow;
     text-align: left;
-    background-color: rgb(30, 24, 39);
+    background-color: rgb(25, 16, 29);
 }
 
 nav a {
@@ -26,16 +34,16 @@ nav a {
 }
 
 nav a:hover:not(.viewing) {
-    /*
-    background-color: rgb(155, 151, 151);
-    */
-    background: rgb(17, 14, 22);
+    background: rgb(50, 32, 58)
 }
 
 .viewing {
     background: rgb(159, 106, 161);
 }
 
+/*
+Properties for headers
+*/
 h1 {
     color: rgb(222, 222, 222);
     font-size: 4em;
