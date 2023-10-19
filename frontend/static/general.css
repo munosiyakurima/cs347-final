@@ -1,6 +1,6 @@
 /*
 Properties to effect the entire html file
-All sizes are done in relative lengths (mainly 'em') rather than absolute lengths (px, cm, etc.)
+All sizes are done in relative lengths (mainly 'em' and '%') rather than absolute lengths (px, cm, etc.)
 All colors are in rgb format
 */
 html{
