@@ -62,19 +62,22 @@ h3 {
 }
 
 /*
-Properties for div elements
+Properties for p elements
 */
-
-div {
-    & p {
-        font-size: 1.25em;
-    }
+p.home-p {
+    font-size: 1.25em;
 }
 
+/*
+Properties for div elements
+*/
 div.home-mm, div.home-guess, div.home-customize {
     padding: 6em 0;
     margin: 2em;
-    background: url("Stu.png") right no-repeat;
-    background-clip: border-box;
     text-align: left;
+    
 }
+
+/*
+Properties for img elements
+*/
