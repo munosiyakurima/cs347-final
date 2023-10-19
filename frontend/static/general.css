@@ -5,10 +5,10 @@ All colors are in rgb format
 */
 html{
     background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover fixed;
-    background-blend-mode: normal;
     font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    margin: 1em 0em;
+    text-align: left;
+    color: rgb(222, 222, 222);
+    margin: 1em 1em;
     padding: 0;
 }
 
@@ -20,9 +20,9 @@ nav {
     right: 0;
     top: 0;
     margin: 0;
-    padding: 1.25em 1em;
+    padding: 1.5em 1em;
     width: 100%;
-    overflow: overflow;
+    overflow: hidden;
     text-align: left;
     background-color: rgb(25, 16, 29);
 }
@@ -47,9 +47,34 @@ Properties for headers
 h1 {
     color: rgb(222, 222, 222);
     font-size: 4em;
+    text-align: center;
 }
 
 h2 {
     color: rgb(185, 186, 192);
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h3 {
+    color: rgb(185, 186, 192);
     font-size: 2em;
+}
+
+/*
+Properties for div elements
+*/
+
+div {
+    & p {
+        font-size: 1.25em;
+    }
+}
+
+div.home-mm, div.home-guess, div.home-customize {
+    padding: 6em 0;
+    margin: 2em;
+    background: url("Stu.png") right no-repeat;
+    background-clip: border-box;
+    text-align: left;
 }
