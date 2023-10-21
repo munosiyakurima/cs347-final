@@ -8,10 +8,11 @@ Most if not all of the spacing is done with padding rather then margins. Margins
 */
 html{
     background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover scroll;
+    padding: 2em 0em 0em 0em;
+    min-height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
     color: rgb(222, 222, 222);
-    padding: 2em 0em 0em 0em;
 }
 
 /*
@@ -67,13 +68,20 @@ Properties for p elements adn their classes.
 */
 p.home-p {
     font-size: 1.25em;
+    width: 40%;
 }
 
 /*
 Properties for div elements and their classes/attributes.
 */
-div.home-mm, div.home-guess, div.home-customize {
-    padding: 8em 4em;
+div.home-mm, div.home-guess, div.home-customize, div.home-end {
+    position: relative;
+    padding: 10em 0em;
     text-align: left;
-    
+    width: 75%;
+    left: 12%
+}
+
+div.home-end {
+    text-align: center;
 }
