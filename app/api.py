@@ -31,16 +31,44 @@ def rules():
 
 
 # @app.route('/insert')
-# def insert(first, last):
-#     cnx = mysql.connector.connect(user='webapp', password='novovoom1web', host='db', database='NovoVoom')
+# def insert(name):
+#     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
 #     cursor = cnx.cursor(buffered=True)
 
-#     query = "INSERT into Players (first, last) VALUES ("+ first +", "+ last +");"
+#     query = "INSERT into PlayerData (name) VALUES ("+ name +");"
 
 #     cursor.execute(query)
-# 
+
 #     cnx.commit()
 
-#     return "Successfully Inserted Matt Lepinski"
+#     return "Welcome, " + name
+
+@app.route('/lookup')
+def direct_form():
+    return render_template('lookup.html')
+
+@app.route('/player', methods = ['POST'])
+def lookup():
+    cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
+    cursor = cnx.cursor(buffered=True)
+    form_data = request.form
+    player_name = form_data['name']
+    
+    query = "SELECT name, gameID, moves, attempts, gameComplete FROM PlayerData WHERE name = '" + player_name + "'";
+    
+    q_list = query.split(';')
+    for q in q_list:
+        if (len(q) > 2):
+            cursor.execute(q) 
+
+    cnx.commit()
+
+    output_str = ""
+    for data in cursor:
+        for item in data:
+            output_str = output_str + str(item) + ",   "
+        output_str = output_str + "\n"
+
+    return render_template('player.html', output = output_str)
 
 app.run(host='0.0.0.0', port=5000)
