@@ -1,7 +1,7 @@
 import random
 import game_board
 
-COLOR_MASTER = ['red', 'blue', 'black', 'white', 'brown', 'orange', 'purple', 'pink']
+COLOR_MASTER = ['red', 'blue', 'black', 'white', 'brown', 'orange', 'purple', 'pink', 'green']
 
 max_password_len = 4
 max_password_attempts = 4
@@ -29,13 +29,14 @@ def password_generator():
 def valid_moves(user_guess: str):
     if len(user_guess) != max_password_len:
         return False
-    if user_guess.lower not in COLOR_MASTER:
-        return False
+    for color in user_guess:
+        if color.lower() not in COLOR_MASTER:
+            return False
     return True
 
 #Parses the user's guess to see what they got correct. Prints out relevant information and returns false if there are any incorrect guesses
 def guess_checker(user_guess, password):
-    guess = user_guess.split()
+    guess = user_guess
     correct = 0
     false_position = 0
     empty = 0
@@ -55,59 +56,49 @@ def guess_checker(user_guess, password):
     print()
     return False
 
-#A recursive function that playes through the entirety of the game Mastermind
-def game_loop():
-    password = password_generator()
-    board.display_board()
-
-#REMEMBER TO TAKE OUT THE PASSWORD!!!!
-    print(password)
-    user_guess = input("Enter your guess: ")
-
-    #repeats prompt until your input is valid
-    while not valid_moves(user_guess):
-        print("Your input was wrong. Care to try again?")
-        print
-        user_guess = input("Enter your guess: ")
-
-    #update the text board, and display
-    board.update_board(attempts, user_guess)
-    board.display_board()
-
-    #If the user's guess is correct, end the game
-    if(guess_checker(user_guess, password)):
-        finished = True
-        print("Code Broken!  You win!!")
-        print
-        print
-        return
-    
-    #If the user made too many attempts, end the game
-    elif(attempts>= max_password_attempts):
-        print("Too Bad!  This game is over")
-        print("The correct password was: " + password)
-        print
-        print("Thank you for playing!")
-        return
-    
-    #if the user's guess is wrong, we move to the next line
-    else:
-        print("Not quite.  Let's try again")
-        attempts += 1
-        game_loop()
-        
-    return
-                
-
-
 def main():
+    global attempts
     password = password_generator()
-    print(password)
-    user_guess = input("Enter your guess: ")
-    valid_moves(user_guess)
-    guess_checker(user_guess, password)
+    board.display_board()
+    finished = False
     
-    
+    while not finished:
+    #REMEMBER TO TAKE OUT THE PASSWORD!!!!
+        print(password)
+        user_guess = input("Enter your guess: ")
+        user_guess = user_guess.split()
+        #repeats prompt until your input is valid
+        while not valid_moves(user_guess):
+            print("Your input was wrong. Care to try again?")
+            print
+            user_guess = input("Enter your guess: ")
+            user_guess = user_guess.split()
+
+        #update the text board, and display
+        board.update_board(attempts, user_guess)
+        board.display_board()
+        
+        attempts += 1
+
+        #If the user's guess is correct, end the game
+        if(guess_checker(user_guess, password)):
+            finished = True
+            print("Code Broken! You win!!")
+            print
+            print
+            exit()
+        
+        #If the user made too many attempts, end the game
+        elif(attempts == max_password_attempts):
+            print("Too Bad! This game is over")
+            print("The correct password was: " , password)
+            print
+            print("Thank you for playing!")
+            exit()
+        
+        #if the user's guess is wrong, we move to the next line
+        else:
+            print("Not quite.  Let's try again")
 
 if __name__ == "__main__": 
-    main() 
+    main()
