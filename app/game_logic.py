@@ -1,7 +1,7 @@
 import random
 import game_board
 
-COLOR_MASTER = ['red', 'blue', 'black', 'white', 'brown', 'orange', 'purple', 'pink', 'green']
+COLOR_MASTER = ['red', 'blue','white', 'orange', 'purple', 'magenta', 'green']
 
 max_password_len = 4
 max_password_attempts = 4
@@ -64,7 +64,7 @@ def main():
     
     while not finished:
     #REMEMBER TO TAKE OUT THE PASSWORD!!!!
-        print(password)
+        #print(password)
         user_guess = input("Enter your guess: ")
         user_guess = user_guess.split()
         #repeats prompt until your input is valid
