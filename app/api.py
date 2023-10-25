@@ -18,8 +18,6 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 app.secret_key = game_id
 
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -71,4 +69,5 @@ def lookup():
 
     return render_template('player.html', output = output_str)
 
-app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__':  
+   app.run(host='0.0.0.0', port=5000)

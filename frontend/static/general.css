@@ -1,0 +1,87 @@
+/*
+Properties to effect the entire html file.
+All sizes are done in relative lengths (mainly 'em' and '%') rather than absolute lengths (px, cm, mm).
+All colors are in rgb format for a consistent format.
+Most if not all of the spacing is done with padding rather then margins. Margins effect space in relation to
+    objects, while padding effects space in relation to anything within an object. Be careful when adding
+    margins as to not screw with text and image layouts.
+*/
+html{
+    background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover scroll;
+    padding: 2em 0em 0em 0em;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    color: rgb(222, 222, 222);
+}
+
+/*
+Properties for the navigation element and its attributes.
+*/
+nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 1.5em 1em;
+    width: 100%;
+    overflow: hidden;
+    text-align: left;
+    background-color: rgb(25, 16, 29);
+}
+
+nav a {
+    text-decoration-line: none;
+    padding: 1.25em 2em;
+    color: rgb(222, 222, 222);
+}
+
+nav a:hover:not(.viewing) {
+    background: rgb(50, 32, 58)
+}
+
+.viewing {
+    background: rgb(159, 106, 161);
+}
+
+/*
+Properties for headers.
+*/
+h1 {
+    color: rgb(222, 222, 222);
+    font-size: 4em;
+    text-align: center;
+}
+
+h2 {
+    color: rgb(185, 186, 192);
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h3 {
+    color: rgb(185, 186, 192);
+    font-size: 2em;
+}
+
+/*
+Properties for p elements adn their classes.
+*/
+p.home-p {
+    font-size: 1.25em;
+    width: 40%;
+}
+
+/*
+Properties for div elements and their classes/attributes.
+*/
+div.home-mm, div.home-guess, div.home-customize, div.home-end {
+    position: relative;
+    padding: 10em 0em;
+    text-align: left;
+    width: 75%;
+    left: 12%
+}
+
+div.home-end {
+    text-align: center;
+}
