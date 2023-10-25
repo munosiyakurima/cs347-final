@@ -35,6 +35,7 @@ def main():
     boardgame = GameBoard(4, 6)
     boardgame.generate_board()
     print(boardgame.rows)
+    boardgame.update_board(0, "red blue black orange")
 
     for row in boardgame.board:
         print(row)
