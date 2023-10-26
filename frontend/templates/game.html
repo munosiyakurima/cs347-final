@@ -7,10 +7,43 @@
     <title>Mastermind - Game</title>
 </head>
 <body>
-    <h1> MASTERMIND </h1>
-    <img src="../static/MM_wip.png" alt="Under Construction" 
-        style="display: block; margin-left: auto;
-        margin-right: auto; width: 50%;">
+    <h1> Board </h1>
+    <table class="board" style="width:75%">
+        <tr>
+            <th style="width:25%">Attempt #</th>
+            <th style="width:50%">Password</th>
+            <th style="width:25%">Hints</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        </table>
+
+    <div class="coloroptions">
+        <label class="container">One
+            <input type="checkbox">
+            <span class="checkmark" id="colorone" style="background-color: blue;"></span>
+          </label>
+          <label class="container">Two
+            <input type="checkbox">
+            <span class="checkmark" id="colortwo" style="background-color: red;"></span>
+          </label>
+          <label class="container">Three
+            <input type="checkbox">
+            <span class="checkmark" id="colorthree" style="background-color: green;"></span>
+          </label>
+          <label class="container">Four
+            <input type="checkbox">
+            <span class="checkmark" id="colorfour" style="background-color: brown;"></span>
+          </label>
+    </div>
     
 </body>
 </html>
