@@ -8,31 +8,53 @@
     <title>Test</title>
 </head>
 <body>
-    <form class="passwordguess">
-        <label for="colorone" class="colorswitch"> colorone
-            <input type="checkbox" class="colortoggle unmarked" id="colorone" 
-            onclick="toggleUnmarked(colorone)" style="background-color: red;">
-        </label>
-        <label for="colortwo" class="colorswitch">
-            <input type="checkbox" class="colortoggle unmarked" id="colortwo" 
-            onclick="toggleUnmarked(colortwo)" style="background-color: blue;">
-        </label>
-        <label for="colorthree" class="colorswitch">
-            <input type="checkbox" class="colortoggle unmarked" id="colorthree" 
-            onclick="toggleUnmarked(colorthree)" style="background-color: green;">
-        </label>
-        <label for="colorfour" class="colorswitch">
-            <input type="checkbox" class="colortoggle unmarked" id="colorfour"
-            onclick="toggleUnmarked(colorfour)" style="background-color: pink;">
-        </label>
-        <label for="colorfive" class="colorswitch">
-            <input type="checkbox" class="colortoggle unmarked" id="colorfive" 
-            onclick="toggleUnmarked(colorfive)" style="background-color: purple;">
-        </label>
-        <label for="colorsix" class="colorswitch">
-            <input type="checkbox" class="colortoggle unmarked" id="colorsix"
-            onclick="toggleUnmarked(colorsix)" style="background-color: brown;">
-        </label>
-    </form>
+    <div class="board1">
+        <table class="board2">
+            <tr>
+                <th style="width:25%">Turn</th>
+                <th style="width:50%">Guess</th>
+                <th style="width:25%">Hint</th>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+              </tr>
+          </table>
+    </div>
+    <div class="playerguess">
+        <form class="passwordattempt" onclick="checkOptions()">
+            <label for="colorone" class="colorlabel" title="colorone">
+                <input type="checkbox" class="toggle" id="colorone" 
+                onclick="toggleUnmarked('colorone')" style="background: url(../static/marble.jpg), red; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colortwo" class="colorlabel" title="colortwo">
+                <input type="checkbox" class="toggle" id="colortwo" 
+                onclick="toggleUnmarked('colortwo')" style="background: url(../static/marble.jpg), blue; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorthree" class="colorlabel" title="colorthree">
+                <input type="checkbox" class="toggle" id="colorthree" 
+                onclick="toggleUnmarked('colorthree')" style="background: url(../static/marble.jpg), green; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorfour" class="colorlabel" title="colorfour">
+                <input type="checkbox" class="toggle" id="colorfour"
+                onclick="toggleUnmarked('colorfour')" style="background: url(../static/marble.jpg), pink; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorfive" class="colorlabel" title="colorfive">
+                <input type="checkbox" class="toggle" id="colorfive" 
+                onclick="toggleUnmarked('colorfive')" style="background: url(../static/marble.jpg), purple; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorsix" class="colorlabel" title="colorsix">
+                <input type="checkbox" class="toggle" id="colorsix"
+                onclick="toggleUnmarked('colorsix')" style="background: url(../static/marble.jpg), saddleBrown; background-blend-mode: multiply, normal;">
+            </label>
+        </form>
+    </div>
+    
 </body>
 </html>
