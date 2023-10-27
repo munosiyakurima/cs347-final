@@ -46,42 +46,56 @@ nav a:hover:not(.viewing) {
 /*
 Properties for headers.
 */
-h1 {
-    color: rgb(222, 222, 222);
-    font-size: 4em;
-    text-align: center;
-}
 
-h2 {
-    color: rgb(185, 186, 192);
-    font-size: 2.5em;
-    text-align: center;
-}
-
-h3 {
-    color: rgb(185, 186, 192);
-    font-size: 2em;
-}
 
 /*
 Properties for p elements adn their classes.
 */
-p.home-p {
-    font-size: 1.25em;
-    width: 40%;
-}
+
 
 /*
 Properties for div elements and their classes/attributes.
 */
-div.home-mm, div.home-guess, div.home-customize, div.home-end {
+
+
+/* 
+Properties for colorswitch
+*/
+.colorswitch {
     position: relative;
-    padding: 10em 0em;
-    text-align: left;
-    width: 75%;
-    left: 12%
+    padding: 0;
+    margin: 0;
+    width: 5.5em;
+    height: 5.5em;
+    display: inline-block;
+    margin: 0em .5em;
 }
 
-div.home-end {
-    text-align: center;
+.colorswitch input { 
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    opacity: 0;
+    display: inline;
+}
+
+.colortoggle {
+    position: relative;
+    width: 5.5em;
+    height: 5.5em;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+    box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 0em 0em 0em .25em rgba(255, 255, 255, 0);
+    border-radius: 100%;
+    transition: .3s;
+}
+
+.colortoggle:hover {
+    box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 0em 0em 0em .25em rgba(255, 255, 255, 0.507);
+}
+
+input:checked + .colortoggle {
+    box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 0em 0em 0em .25em rgb(255, 255, 255);
 }
