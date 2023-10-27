@@ -4,37 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/game.css">
+    <script src="../static/game.js"></script>
     <title>Test</title>
 </head>
 <body>
-    
-    <div class="coloroptions">
-        <label class="colorswitch">
-            <input type="checkbox">
-            <span class="colortoggle" id="colorone" style="background-color: red;"></span>
+    <form class="passwordguess">
+        <label for="colorone" class="colorswitch"> colorone
+            <input type="checkbox" class="colortoggle unmarked" id="colorone" 
+            onclick="toggleUnmarked(colorone)" style="background-color: red;">
         </label>
-        <label class="colorswitch">
-            <input type="checkbox">
-            <span class="colortoggle" id="colortwo" style="background: rgb(0, 0, 255);"></span>
+        <label for="colortwo" class="colorswitch">
+            <input type="checkbox" class="colortoggle unmarked" id="colortwo" 
+            onclick="toggleUnmarked(colortwo)" style="background-color: blue;">
         </label>
-        <label class="colorswitch">
-            <input type="checkbox">
-            <span class="colortoggle" id="colorthree" style="background: green;"></span>
+        <label for="colorthree" class="colorswitch">
+            <input type="checkbox" class="colortoggle unmarked" id="colorthree" 
+            onclick="toggleUnmarked(colorthree)" style="background-color: green;">
         </label>
-        <label class="colorswitch">
-            <input type="checkbox">
-            <span class="colortoggle" id="colorfour" style="background: pink;"></span>
+        <label for="colorfour" class="colorswitch">
+            <input type="checkbox" class="colortoggle unmarked" id="colorfour"
+            onclick="toggleUnmarked(colorfour)" style="background-color: pink;">
         </label>
-        <label class="colorswitch">
-            <input type="checkbox">
-            <span class="colortoggle" id="colorfive" style="background: purple;"></span>
+        <label for="colorfive" class="colorswitch">
+            <input type="checkbox" class="colortoggle unmarked" id="colorfive" 
+            onclick="toggleUnmarked(colorfive)" style="background-color: purple;">
         </label>
-        <label class="colorswitch">
-            <input type="checkbox">
-            <span class="colortoggle" id="colorsix" style="background: brown;"></span>
+        <label for="colorsix" class="colorswitch">
+            <input type="checkbox" class="colortoggle unmarked" id="colorsix"
+            onclick="toggleUnmarked(colorsix)" style="background-color: brown;">
         </label>
-    </div>
-    
-
+    </form>
 </body>
 </html>

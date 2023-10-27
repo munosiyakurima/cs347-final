@@ -61,41 +61,24 @@ Properties for div elements and their classes/attributes.
 /* 
 Properties for colorswitch
 */
-.colorswitch {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    width: 5.5em;
-    height: 5.5em;
-    display: inline-block;
-    margin: 0em .5em;
-}
 
-.colorswitch input { 
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: 0;
-    opacity: 0;
-    display: inline;
-}
-
-.colortoggle {
+input[type="checkbox"] {
+    appearance: none;
     position: relative;
     width: 5.5em;
     height: 5.5em;
     overflow: hidden;
-    display: block;
+    display: inline-block;
     cursor: pointer;
     box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 0em 0em 0em .25em rgba(255, 255, 255, 0);
     border-radius: 100%;
     transition: .3s;
 }
 
-.colortoggle:hover {
+input[type="checkbox"]:hover {
     box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 0em 0em 0em .25em rgba(255, 255, 255, 0.507);
 }
 
-input:checked + .colortoggle {
+input[type="checkbox"]:checked {
     box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 0em 0em 0em .25em rgb(255, 255, 255);
 }
