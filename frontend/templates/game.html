@@ -3,46 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/general.css">
-    <title>Mastermind - Game</title>
+    <link rel="stylesheet" href="../static/game.css">
+    <script src="../static/game.js"></script>
+    <title>Game</title>
 </head>
 <body>
-    <h1> Board </h1>
-    <table class="board" style="width:75%">
-        <tr>
-            <th style="width:25%">Attempt #</th>
-            <th style="width:50%">Password</th>
-            <th style="width:25%">Hints</th>
-        </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
-        </table>
-
-    <div class="coloroptions">
-        <label class="container">One
-            <input type="checkbox">
-            <span class="checkmark" id="colorone" style="background-color: blue;"></span>
-          </label>
-          <label class="container">Two
-            <input type="checkbox">
-            <span class="checkmark" id="colortwo" style="background-color: red;"></span>
-          </label>
-          <label class="container">Three
-            <input type="checkbox">
-            <span class="checkmark" id="colorthree" style="background-color: green;"></span>
-          </label>
-          <label class="container">Four
-            <input type="checkbox">
-            <span class="checkmark" id="colorfour" style="background-color: brown;"></span>
-          </label>
+    <div class="board1">
+        <table class="board2">
+            <tr>
+                <th style="width:25%">Turn</th>
+                <th style="width:50%">Guess</th>
+                <th style="width:25%">Hint</th>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+              </tr>
+          </table>
+    </div>
+    <div class="playerguess">
+        <form class="passwordattempt" onclick="checkOptions()">
+            <label for="colorone" class="colorlabel" title="colorone">
+                <input type="checkbox" class="toggle" id="colorone" 
+                onclick="toggleUnmarked('colorone')" style="background: url(../static/marble.jpg), red; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colortwo" class="colorlabel" title="colortwo">
+                <input type="checkbox" class="toggle" id="colortwo" 
+                onclick="toggleUnmarked('colortwo')" style="background: url(../static/marble.jpg), blue; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorthree" class="colorlabel" title="colorthree">
+                <input type="checkbox" class="toggle" id="colorthree" 
+                onclick="toggleUnmarked('colorthree')" style="background: url(../static/marble.jpg), green; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorfour" class="colorlabel" title="colorfour">
+                <input type="checkbox" class="toggle" id="colorfour"
+                onclick="toggleUnmarked('colorfour')" style="background: url(../static/marble.jpg), pink; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorfive" class="colorlabel" title="colorfive">
+                <input type="checkbox" class="toggle" id="colorfive" 
+                onclick="toggleUnmarked('colorfive')" style="background: url(../static/marble.jpg), purple; background-blend-mode: multiply, normal;">
+            </label>
+            <label for="colorsix" class="colorlabel" title="colorsix">
+                <input type="checkbox" class="toggle" id="colorsix"
+                onclick="toggleUnmarked('colorsix')" style="background: url(../static/marble.jpg), saddleBrown; background-blend-mode: multiply, normal;">
+            </label>
+        </form>
     </div>
     
 </body>
