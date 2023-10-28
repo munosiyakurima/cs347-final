@@ -49,7 +49,7 @@ function toggleUnmarked(color){
     checkOptions(maxPasswordLen);
 }
 
-// checks if
+// checks if the player's password has been finished for submission
 function checkOptions(maxPassLen) {
     let coloricons = document.getElementsByClassName("colorbutton");
     let cur_unmarked = document.getElementsByClassName("marked");
@@ -70,6 +70,7 @@ function checkOptions(maxPassLen) {
     }
 }
 
+// updates the stored information of the current password
 function updateCurrentPassword() {
     const activeEle = document.activeElement;
     let activeEleID = activeEle.id;
