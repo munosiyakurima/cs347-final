@@ -1,3 +1,6 @@
+let currentPassword = [];
+const maxPasswordLen = 4
+
 function setUpBoard(maxAttempts) {
     const gameTable = document.getElementById("gameInfo");
         for (let i = 0; i < maxAttempts; i++) { // creates game board
@@ -25,6 +28,7 @@ function setUpColors(colorList) {
             const colorButton = document.createElement("input");
             colorButton.type = "checkbox";
             colorButton.classList.add("coloricon");
+            colorButton.classList.add("colorbutton");
             colorButton.id = "color" + (i+1).toString();
             colorButton.onclick = function () {toggleUnmarked(colorButton.id)};
             colorButton.style.backgroundColor = colorList[i];
@@ -40,7 +44,7 @@ function toggleUnmarked(color){
 }
 
 function checkOptions() {
-    let coloricons = document.getElementsByClassName("coloricon");
+    let coloricons = document.getElementsByClassName("colorbutton");
     let cur_unmarked = document.getElementsByClassName("marked");
     if (cur_unmarked.length == 4) {
         for (let i=0; i < coloricons.length; i++) {
@@ -55,6 +59,19 @@ function checkOptions() {
             coloricons[i].disabled = false;
             document.getElementById("submit").value = "Waiting";
             document.getElementById("submit").disabled = true;
+        }
+    }
+}
+
+function updateCurrentPassword() {
+    const activeEle = document.activeElement;
+    let activeEleID = activeEle.id;
+    if (activeEle.type == "checkbox") {
+        if (currentPassword.includes(activeEleID)) {
+            let colorIndex = currentPassword.indexOf(activeEleID);
+            currentPassword.splice(colorIndex,1);
+        } else {
+            currentPassword.push(activeEleID);
         }
     }
 }

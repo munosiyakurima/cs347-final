@@ -20,13 +20,13 @@
     </div>
 
     <div class="currentpassword">
-        <label title="Current Password" id="currentpassword" onclick="updatePasswordGuess()"> 
+        <div title="Current Password" id="currentpassword" onclick="updatePasswordGuess()"> 
             Current Password
-        </label>
+        </div>
     </div>
 
     <div class="controls">
-        <form id="passwordattempt" onclick="checkOptions()"></form>
+        <form id="passwordattempt" onclick="checkOptions(), updateCurrentPassword()"></form>
         <input type="submit" id="submit" class="submit" value="Waiting" disabled>
     </div>
     
