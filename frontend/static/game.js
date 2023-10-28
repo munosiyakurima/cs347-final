@@ -46,13 +46,14 @@ function toggleUnmarked(color){
     const element = document.getElementById(color);
     element.classList.toggle("marked");
     updateCurrentPassword();
-    checkOptions();
+    checkOptions(maxPasswordLen);
 }
 
-function checkOptions() {
+// checks if
+function checkOptions(maxPassLen) {
     let coloricons = document.getElementsByClassName("colorbutton");
     let cur_unmarked = document.getElementsByClassName("marked");
-    if (cur_unmarked.length == 4) {
+    if (cur_unmarked.length == maxPassLen) {
         for (let i=0; i < coloricons.length; i++) {
             if (!coloricons[i].classList.contains("marked")) {
                 coloricons[i].disabled = true;
@@ -60,7 +61,7 @@ function checkOptions() {
                 document.getElementById("submit").disabled = false;
             }
         } 
-    } else {
+    } else if (cur_unmarked.length == maxPassLen-1) {
         for (let i=0; i < coloricons.length; i++) {
             coloricons[i].disabled = false;
             document.getElementById("submit").value = "Waiting";
