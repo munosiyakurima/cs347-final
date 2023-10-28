@@ -7,16 +7,19 @@ Most if not all of the spacing is done with padding rather then margins. Margins
     margins as to not screw with text and image layouts.
 */
 :root {
-    --colorone: ;
-    --colortwo: ;
-    --colorthree: ;
-    --colorfour: ;
-
+    --color1: ;
+    --color2: ;
+    --color3: ;
+    --color4: ;
+    --color5: ;
+    --color6: ;
+    --color7: ;
+    --color8: ;
 }
 
-html{
+html {
     background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover scroll;
-    padding: 2em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
     min-height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
@@ -26,30 +29,7 @@ html{
 /*
 Properties for the navigation element and its attributes.
 */
-nav {
-    position: fixed;
-    right: 0;
-    top: 0;
-    padding: 1.5em 1em;
-    width: 100%;
-    overflow: hidden;
-    text-align: left;
-    background-color: rgb(25, 16, 29);
-}
 
-nav a {
-    text-decoration-line: none;
-    padding: 1.25em 2em;
-    color: rgb(222, 222, 222);
-}
-
-nav a:hover:not(.viewing) {
-    background: rgb(50, 32, 58)
-}
-
-.viewing {
-    background: rgb(159, 106, 161);
-}
 
 /*
 Properties for headers.
@@ -62,42 +42,54 @@ Properties for p elements adn their classes.
 
 
 /*
-Properties for div elements and their classes/attributes.
+Properties the showing the board (Previous Turns, Previous Attempts, Previous hints).
 */
-.board1 {
+@keyframes colorwarp {
+    from {background-color: rgb(55, 50, 99);}
+    to {background-color: rgb(69, 44, 102);}
+}
+
+.board, .currentpassword {
     display: block;
-    background-color: rgb(156, 156, 156);
+    /* animation: colorwarp 4s infinite alternate; */
     margin: 2em auto;
     max-width: fit-content;
     height: fit-content;
 }
 
-.board1, .board2 {
+.board, table.gameInfo {
     position: relative;
 }
 
-.board2, tr, td {
-    border: 1px solid black;
+table.gameInfo, tr, td {
+    border-width: .25em;
+    border-style: solid none solid none;
+    border-color: black;
     border-collapse: collapse;
 }
 
-.board2 {
+table.gameInfo {
     text-align: center;
     width: 50em;
 }
 
-tr {
-    height: 5em;
+table.gameInfo tr {
+    height: 4em;
 }
 
 /* 
-Properties for forms and inputs
+Properties for input and forms
 */
-.playerguess {
+.controls {
     display: block;
     position: relative;
     margin: 2em auto;
+    padding: 1em 1em .05em 1em;
     max-width: fit-content;
+    overflow: visible;
+    background-color: rgb(164, 157, 170);
+    border-radius: .75em;
+    box-shadow: 0 .75em 0 0 rgb(94, 90, 99);
 }
 
 .colorlabel {
@@ -111,7 +103,7 @@ Properties for forms and inputs
     border-radius: 100%;
 }
 
-input[type="checkbox"] {
+.coloricon {
     appearance: none;
     position: relative;
     width: 100%;
@@ -119,18 +111,47 @@ input[type="checkbox"] {
     margin: 0;
     display: inline-block;
     cursor: pointer;
-    box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 
-                0em 0em 0em .25em rgba(255, 255, 255, 0);
+    box-shadow: .45em -.75em 0 0 rgba(54, 27, 50, 0.753) inset, 
+                0 0 0 .25em rgba(255, 255, 255, 0);
     border-radius: 100%;
+    transition: .3s ease-out;
+}
+
+input.coloricon:hover  {
+    transform: scale(1.075, 1.075);
+    box-shadow: .45em -.75em 0 0 rgba(54, 27, 50, 0.753) inset, 
+                0 0 0 .25em rgba(255, 255, 255, 0.507);
+}
+
+input.coloricon:checked {
+    box-shadow: .45em -.75em 0 0 rgba(54, 27, 50, 0.753) inset, 
+                0 0 0 .25em rgb(255, 255, 255);
+}
+
+label.colorlabel > input.coloricon:disabled {
+    transform: scale(0);
+    
+}
+
+input.submit {
+    appearance: none;
+    display: block;
+    position: relative;
+    margin: 1em auto;
+    padding: 1em 2em;
+    overflow: visible;
+    background-color: grey;
+    font-size: 2em;
+    border: 0;
+    border-radius: .75em;
     transition: .3s;
 }
 
-input[type="checkbox"]:hover {
-    box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 
-                0em 0em 0em .25em rgba(255, 255, 255, 0.507);
+input.submit:disabled {
+    background-color: grey;
+    transform: scale(.75, .75);
 }
 
-input[type="checkbox"]:checked {
-    box-shadow: .45em -.75em .75em 0em rgba(54, 27, 50, 0.712) inset, 
-                0em 0em 0em .25em rgb(255, 255, 255);
+input.submit:enabled {
+    background-color: rgb(169, 235, 138);
 }

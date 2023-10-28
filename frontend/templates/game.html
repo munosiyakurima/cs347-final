@@ -5,56 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/game.css">
     <script src="../static/game.js"></script>
-    <title>Game</title>
+    <title>Mastermind - Game</title>
 </head>
 <body>
-    <div class="board1">
-        <table class="board2">
+    
+    <div class="board">
+        <table class="gameInfo" id="gameInfo">
             <tr>
-                <th style="width:25%">Turn</th>
-                <th style="width:50%">Guess</th>
+                <th style="width:10%">Turn</th>
+                <th style="width:65%">Guess</th>
                 <th style="width:25%">Hint</th>
             </tr>
-            <tr>
-                <td>?</td>
-                <td>?</td>
-                <td>?</td>
-            </tr>
-            <tr>
-                <td>?</td>
-                <td>?</td>
-                <td>?</td>
-              </tr>
           </table>
     </div>
-    <div class="playerguess">
-        <form class="passwordattempt" onclick="checkOptions()">
-            <label for="colorone" class="colorlabel" title="colorone">
-                <input type="checkbox" class="toggle" id="colorone" 
-                onclick="toggleUnmarked('colorone')" style="background: url(../static/marble.jpg), red; background-blend-mode: multiply, normal;">
-            </label>
-            <label for="colortwo" class="colorlabel" title="colortwo">
-                <input type="checkbox" class="toggle" id="colortwo" 
-                onclick="toggleUnmarked('colortwo')" style="background: url(../static/marble.jpg), blue; background-blend-mode: multiply, normal;">
-            </label>
-            <label for="colorthree" class="colorlabel" title="colorthree">
-                <input type="checkbox" class="toggle" id="colorthree" 
-                onclick="toggleUnmarked('colorthree')" style="background: url(../static/marble.jpg), green; background-blend-mode: multiply, normal;">
-            </label>
-            <label for="colorfour" class="colorlabel" title="colorfour">
-                <input type="checkbox" class="toggle" id="colorfour"
-                onclick="toggleUnmarked('colorfour')" style="background: url(../static/marble.jpg), pink; background-blend-mode: multiply, normal;">
-            </label>
-            <label for="colorfive" class="colorlabel" title="colorfive">
-                <input type="checkbox" class="toggle" id="colorfive" 
-                onclick="toggleUnmarked('colorfive')" style="background: url(../static/marble.jpg), purple; background-blend-mode: multiply, normal;">
-            </label>
-            <label for="colorsix" class="colorlabel" title="colorsix">
-                <input type="checkbox" class="toggle" id="colorsix"
-                onclick="toggleUnmarked('colorsix')" style="background: url(../static/marble.jpg), saddleBrown; background-blend-mode: multiply, normal;">
-            </label>
-        </form>
+
+    <div class="currentpassword">
+        <label title="Current Password" id="currentpassword" onclick="updatePasswordGuess()"> Current Password
+        </label>
+    </div>
+
+    <div class="controls">
+        <form id="passwordattempt" onclick="checkOptions()"></form>
+        <input type="submit" id="submit" class="submit" value="Waiting" disabled>
     </div>
     
+    <script> // Script to create the game page
+        const colorList = ["red", "blue", "green", "purple", "pink" ,"saddlebrown"];
+        setUpBoard(8);
+        setUpColors(colorList);
+    </script> 
+
 </body>
 </html>
