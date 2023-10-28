@@ -130,7 +130,6 @@ input.coloricon:checked {
 
 label.colorlabel > input.coloricon:disabled {
     transform: scale(0);
-    
 }
 
 input.submit {
@@ -138,7 +137,8 @@ input.submit {
     display: block;
     position: relative;
     margin: 1em auto;
-    padding: 1em 2em;
+    width: 6em;
+    height: 4em;
     overflow: visible;
     background-color: grey;
     font-size: 2em;
