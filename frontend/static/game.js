@@ -1,9 +1,10 @@
 let currentPassword = [];
-const maxPasswordLen = 4
+const maxPasswordLen = 4;
 
+// creates the gameboard given the max number of attempts for the game
 function setUpBoard(maxAttempts) {
     const gameTable = document.getElementById("gameInfo");
-        for (let i = 0; i < maxAttempts; i++) { // creates game board
+        for (let i = 0; i < maxAttempts; i++) { 
             const curRow = gameTable.insertRow(i+1);
 
             const cell1 = curRow.insertCell(0);
@@ -17,9 +18,10 @@ function setUpBoard(maxAttempts) {
         }
 }
 
+// creates the given colors as buttons and icons to be used for the game
 function setUpColors(colorList) {
     const colorOptions = document.getElementById("passwordattempt");
-        for (let i = 0; i < 6; i++) { // creates and sets color options
+        for (let i = 0; i < 6; i++) {
             const colorLabel = document.createElement("label");
             colorLabel.for = "color" + (i+1).toString();
             colorLabel.classList.add("colorlabel");
@@ -38,9 +40,13 @@ function setUpColors(colorList) {
         }
 }
 
+// toggles the "marked" class of a button, indicating a specific 
+// character for the code is has been added by the player
 function toggleUnmarked(color){
     const element = document.getElementById(color);
     element.classList.toggle("marked");
+    updateCurrentPassword();
+    checkOptions();
 }
 
 function checkOptions() {
