@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-# RUN pip install mysql-connector-python
+RUN pip install mysql-connector-python
 RUN pip install Flask
 
 EXPOSE 5000

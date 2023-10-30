@@ -69,3 +69,4 @@ def lookup():
 
     return render_template('player.html', output = output_str)
 
+app.run(host='0.0.0.0', port=5500)
