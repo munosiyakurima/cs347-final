@@ -31,8 +31,9 @@
     </div>
     
     <script> // Script to create the game page, using "game.js" functions
-        setUpBoard( {{ maxAttempts|safe }} );
-        setUpColors( {{ colors|safe }} );
+        const colorList = ["red","green","blue","purple","saddlebrown","pink"];
+        setUpBoard(8);
+        setUpColors(colorList);
     </script> 
 
 </body>
