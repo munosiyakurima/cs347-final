@@ -17,8 +17,8 @@ class GameBoard:
         self.board = board.split("/")
     
     #updates the newest line of the board based on the user's input
-    def update_board(self, turn: int, input: str):
-        answer = input.split()
+    def update_board(self, turn: int, input):
+        answer = input
         line = ""
         for color in answer:
             line += " " + color[0] + " "

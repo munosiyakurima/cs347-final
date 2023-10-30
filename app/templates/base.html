@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  {% include 'head.html' %}
+  <body> 
+   {% include 'nav.html' %}
+   {% include 'hero.html' %}   
+   {% with playerdata=playerdata %}
+      {% include 'portfolio.html' %}
+    {% endwith %}
+   {% include 'footer.html' %}
+  </body>
+</html>

@@ -1,5 +1,5 @@
 import random
-import app.game_board as game_board
+import game_board as game_board
 
 COLOR_MASTER = ['red', 'blue','white', 'orange', 'purple', 'magenta', 'green']
 
