@@ -7,7 +7,7 @@ services:
     depends_on:
       - "db"
   frontend:
-    build: ./api
+    build: ./frontend
     ports:
       - "80:5000"
     restart: on-failure
