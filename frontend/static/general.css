@@ -8,7 +8,7 @@ Most if not all of the spacing is done with padding rather then margins. Margins
 */
 html{
     background: linear-gradient(rgb(40, 47, 66), rgb(54, 27, 50)) no-repeat center / cover scroll;
-    padding: 2em 0em 0em 0em;
+    padding: 4em 0em 4em 0em;
     min-height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
@@ -16,7 +16,7 @@ html{
 }
 
 /*
-Properties for the navigation element and its attributes.
+Properties for the navigation element and its classes/attributes.
 */
 nav {
     position: fixed;
@@ -64,24 +64,70 @@ h3 {
 }
 
 /*
-Properties for p elements adn their classes.
+Properties for home page classes.
 */
 p.home-p {
     font-size: 1.5em;
     width: 40%;
 }
 
-/*
-Properties for div elements and their classes/attributes.
-*/
-div.home-mm, div.home-guess, div.home-customize, div.home-end {
+div.home-body, div.home-end {
     position: relative;
-    padding: 10em 0em;
+    padding: 6em 0em;
     text-align: left;
-    max-width: 75%;
+    width: 75%;
     margin: 0 auto;
 }
 
 div.home-end {
     text-align: center;
+}
+
+.buttonlink {
+    position: relative;
+    margin: .25em 1em;
+    padding: 0em .5em;
+    height: 4em;
+    background-color: grey;
+    font-size: 2em;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.507);
+    border-radius: .75em;
+    transition: .3s;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonlink:hover {
+    transform: scale(1.075, 1.075);
+    box-shadow: 0 0 0 .25em rgba(255, 255, 255, 0.507);
+    color: rgb(0, 0, 0);
+}
+
+.newgame:hover {
+    background-color: rgb(99, 187, 88);
+}
+
+.oldgame:hover {
+    background-color: rgb(88, 151, 187);
+}
+
+/*
+Properties for temporary elements.
+*/
+div.wip {
+    position: relative;
+    padding: 4em 4em;
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
+}
+
+img.wip {
+    width: 35%;
+    height: 10%;
 }
