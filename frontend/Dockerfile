@@ -1,12 +1,12 @@
 FROM python:3.7-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/frontend
 
 COPY . .
 
 RUN pip install mysql-connector-python
 RUN pip install Flask
 
-EXPOSE 5000
+EXPOSE 5500
 
 CMD ["python3", "api.py"]
