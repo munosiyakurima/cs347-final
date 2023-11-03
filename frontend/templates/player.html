@@ -1,14 +1,18 @@
-<head>
-	<title>Player Results</title>
+{% extends "base.html" %}
 
-</head>
+{% block title %}Home{% endblock title %}
 
+{% block header1 %}Player Results{% endblock header1 %}
 
-<body>
+{% block content %}
 
-<hr>
-<p> Name, GameID, Moves, Attempts, GameComplete </p>
-<hr>
-{{output}}
+	<body>
 
-</body>
+	<hr>
+	<p> Name, GameID, Moves, Attempts, GameComplete </p>
+	<hr>
+	{{output}}
+
+	</body>
+
+{% endblock content %}
