@@ -6,7 +6,7 @@ import random
 import mysql.connector
 
 app = Flask(__name__, 
-        static_url_path='',
+        static_url_path='/static',
         static_folder='static',
         template_folder='templates')
 
@@ -20,8 +20,10 @@ app.secret_key = game_id
 
 # loads the home page
 @app.route('/')
+@app.route('/home')
 def home():
     return render_template('home.html')
+
 
 # loads the "how to play" page for general game rules and instructions
 @app.route('/howtoplay')

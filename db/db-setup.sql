@@ -11,6 +11,14 @@ CREATE TABLE PlayerData(
 	PRIMARY KEY (gameID)
 );
 
+CREATE TABLE GameSettings(
+	gameID int AUTO_INCREMENT,
+	colors TEXT,
+	maxAttempts int,
+	allowRepeats boolean,
+	PRIMARY KEY (gameID)
+);
+
 
 INSERT INTO PlayerData (name, moves, attempts, gameComplete) VALUES ('Muno', 'mmmm', '3', 0);
 INSERT INTO PlayerData (name, moves, attempts, gameComplete) VALUES ('John', 'blue,red,black;yellow,blue green;pink,purple,red', '3', 0);

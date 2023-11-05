@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html>
-  {% include 'head.html' %}
-  <body> 
-   {% include 'nav.html' %}
-   {% include 'hero.html' %}   
-   {% with playerdata=playerdata %}
-      {% include 'portfolio.html' %}
-    {% endwith %}
-   {% include 'footer.html' %}
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='general.css') }}">
+    <title>Mastermind - {% block title %}{% endblock title %}</title>
+    <body>
+
+      <h1>{% block header1 %}{% endblock header1 %}</h1>
+
+      {% block content %}{% endblock content %}
+
+      <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('pregame') }}">Play Master Mind</a>
+        <a href="{{ url_for('howtoplay') }}">How to play Master Mind</a>
+        <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+      </nav>
+
+    </body>
+</head>
 </html>

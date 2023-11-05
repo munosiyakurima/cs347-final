@@ -1,15 +1,18 @@
-<head>
-	<title>Lookup Player</title>
-</head>
+{% extends "base.html" %}
 
+{% block title %}Home{% endblock title %}
 
-<body>
+{% block header1 %}Lookup Player{% endblock header1 %}
 
+{% block content %}
 
-<form action="/player" method = "POST">
-	<p> Name <input type = "text" name = "name" /> </p>
-	<p> <input type = "submit" value = "Submit" /></p>
-</form>
+    <div class="wip">
+        <p style="font-size:6em"><em>Under Construction</em></p>
+    </div>
 
+	<form action="/player" method = "POST">
+		<p> Name <input type = "text" name = "name" /> </p>
+		<p> <input type = "submit" value = "Submit" /></p>
+	</form>
 
-</body>
+{% endblock content %}
