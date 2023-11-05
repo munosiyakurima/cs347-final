@@ -18,13 +18,30 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 app.secret_key = game_id
 
+# loads the home page
 @app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/rules')
-def rules():
-    return render_template('rules.html')
+# loads the "how to play" page for general game rules and instructions
+@app.route('/howtoplay')
+def howtoplay():
+    return render_template('howtoplay.html')
+
+# loads game creation page, for starting a new game or continuing an unfinished game
+@app.route('/pregame')
+def creategame():
+    return render_template('pregame.html')
+
+# Loads the game page, for playing a unique game of Mastermind
+@app.route('/game')
+def game():
+    return render_template('game.html')
+
+# Loads the scoreboard
+@app.route('/scoreboard')
+def scoreboard():
+    return render_template('scoreboard.html')
 
 
 
