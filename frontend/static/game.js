@@ -32,6 +32,7 @@ function setUpColors(colorList) {
             colorButton.classList.add("coloricon");
             colorButton.classList.add("colorbutton");
             colorButton.id = "color" + (i+1).toString();
+            colorButton.value = "";
             colorButton.onclick = function () {toggleUnmarked(colorButton.id)};
             colorButton.style.backgroundColor = colorList[i];
 

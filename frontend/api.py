@@ -45,8 +45,6 @@ def game():
 def scoreboard():
     return render_template('scoreboard.html')
 
-
-
 # @app.route('/insert')
 # def insert(name):
 #     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
