@@ -88,7 +88,7 @@ function updateCurrentPassword() {
         if (currentPassword.includes(activeEleID)) { 
             let colorIndex = currentPassword.indexOf(activeEleID);
             currentPassword.splice(colorIndex,1);
-            activeEleID.name = "coloroption";
+            activeEle.name = "";
         } else { // else, add it
             currentPassword.push(activeEleID);
         }
