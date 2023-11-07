@@ -26,8 +26,9 @@
     </div>
 
     <div class="controls">
-        <form id="passwordattempt" ></form>
+        <form id="passwordattempt" action="{{ url_for('testdisplay') }}" method="get">
         <input type="submit" id="submit" class="submit" value="Waiting" disabled>
+        </form>
     </div>
     
     <script> // Script to create the game page, using "game.js" functions

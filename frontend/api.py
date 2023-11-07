@@ -45,6 +45,16 @@ def game():
 def scoreboard():
     return render_template('scoreboard.html')
 
+# This loads a test page to make sure the HTML form of the player's guess
+# is correct and can be parsed for the game logic
+@app.route('/testdisplay', methods = ['GET'])
+def testdisplay():
+    playerguess = []
+    for i in request.args:
+        playerguess.append(request.args.get(i))
+
+    return render_template('testdisplay.html', playerguess=playerguess)
+
 # @app.route('/insert')
 # def insert(name):
 #     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')

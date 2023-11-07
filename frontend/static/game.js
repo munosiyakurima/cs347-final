@@ -22,17 +22,20 @@ function setUpBoard(maxAttempts) {
 function setUpColors(colorList) {
     const colorOptions = document.getElementById("passwordattempt");
         for (let i = 0; i < 6; i++) {
+            // creating a label to not get broswer warnings
             const colorLabel = document.createElement("label");
-            colorLabel.for = "color" + (i+1).toString();
+            colorLabel.for = colorList[i];
             colorLabel.classList.add("colorlabel");
             colorLabel.title = colorList[i];
 
+            // creating a checkbox for the player to input their guesses
             const colorButton = document.createElement("input");
             colorButton.type = "checkbox";
             colorButton.classList.add("coloricon");
             colorButton.classList.add("colorbutton");
-            colorButton.id = "color" + (i+1).toString();
-            colorButton.value = "";
+            colorButton.id = colorList[i];
+            colorButton.name = "";
+            colorButton.value = colorList[i];
             colorButton.onclick = function () {toggleUnmarked(colorButton.id)};
             colorButton.style.backgroundColor = colorList[i];
 
@@ -42,7 +45,7 @@ function setUpColors(colorList) {
 }
 
 // toggles the "marked" class of a button, indicating a specific 
-// character for the code is has been added by the player
+// code color is has been added to the guess
 function toggleUnmarked(color){
     const element = document.getElementById(color);
     element.classList.toggle("marked");
@@ -50,10 +53,12 @@ function toggleUnmarked(color){
     checkOptions(maxPasswordLen);
 }
 
-// checks if the player's password has been finished for submission
+// checks if the player's password is ready for submission
 function checkOptions(maxPassLen) {
     let coloricons = document.getElementsByClassName("colorbutton");
     let cur_unmarked = document.getElementsByClassName("marked");
+    // if the player's guess has reached the max password length, 
+    // update all buttons for submisson
     if (cur_unmarked.length == maxPassLen) {
         for (let i=0; i < coloricons.length; i++) {
             if (!coloricons[i].classList.contains("marked")) {
@@ -62,6 +67,8 @@ function checkOptions(maxPassLen) {
                 document.getElementById("submit").disabled = false;
             }
         } 
+    // else if the player's guess is smaller than the max password length,
+    // update the page to prevent submission
     } else if (cur_unmarked.length == maxPassLen-1) {
         for (let i=0; i < coloricons.length; i++) {
             coloricons[i].disabled = false;
@@ -75,12 +82,22 @@ function checkOptions(maxPassLen) {
 function updateCurrentPassword() {
     const activeEle = document.activeElement;
     let activeEleID = activeEle.id;
-    if (activeEle.type == "checkbox") {
-        if (currentPassword.includes(activeEleID)) {
+    // making sure the active elemen is a color the player can choose
+    if (activeEle.type == "checkbox") { 
+        // if the color is already in the password, remove it
+        if (currentPassword.includes(activeEleID)) { 
             let colorIndex = currentPassword.indexOf(activeEleID);
             currentPassword.splice(colorIndex,1);
-        } else {
+            activeEleID.name = "coloroption";
+        } else { // else, add it
             currentPassword.push(activeEleID);
         }
+        let counter = 1;
+        // update the name attribute of each selected color, to identify color order
+        currentPassword.forEach(color => { 
+            let similarEle = document.getElementById(color);
+            similarEle.name = "color" + counter.toString();
+            counter++;
+        }); 
     }
 }
