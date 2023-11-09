@@ -6,8 +6,26 @@
 
 {% block content %}
 
-    <div class="wip">
-        <p style="font-size:6em"><em>Under Construction</em></p>
-    </div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Game ID</th>
+            <th scope="col">Attempts</th>
+            <th scope="col">Game Complete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in list_of_players %}
+        <tr>
+            <td>{{ player.name }}</td>
+            <td>{{ player.gameID }}</td>
+            <td>{{ player.attempts }}</td>
+            <!-- Jinja2 ternary operator syntax -->
+            <td>{{ "Yes" if player.gameComplete else "No" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock content %}
