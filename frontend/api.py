@@ -40,9 +40,11 @@ def creategame():
 def game():
     return render_template('game.html')
 
-# Loads the scoreboard
+# Retrieves data about each player from the DB, transforms it into a readable format and renders the scoreboard page
+# Implemented by Aidan Roessler from team Vaas
 @app.route('/scoreboard')
 def scoreboard():
+    # TODO Rotate password and store in an environment variable to not expose it to the FE
     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
     cursor = cnx.cursor(buffered=True)
     
