@@ -48,7 +48,7 @@ def scoreboard():
     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
     cursor = cnx.cursor(buffered=True)
     
-    query = "SELECT name, gameID, attempts, gameComplete FROM PlayerData";
+    query = "SELECT name, gameID, attempts FROM PlayerData WHERE gameComplete = TRUE";
     
     cursor.execute(query) 
 
