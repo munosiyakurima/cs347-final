@@ -40,10 +40,38 @@ def creategame():
 def game():
     return render_template('game.html')
 
-# Loads the scoreboard
+# Retrieves data about each player from the DB, transforms it into a readable format and renders the scoreboard page
+# Implemented by Aidan Roessler from team Vaas
 @app.route('/scoreboard')
 def scoreboard():
-    return render_template('scoreboard.html')
+    # TODO Rotate password and store in an environment variable to not expose it to the FE
+    cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
+    cursor = cnx.cursor(buffered=True)
+    
+    query = "SELECT name, gameID, attempts FROM PlayerData WHERE gameComplete = TRUE";
+    
+    cursor.execute(query) 
+
+    cnx.commit()
+
+    results = cursor.fetchall()
+    columns = cursor.column_names
+    
+    # Create a list of dictionaries where in each dictionary each key corresponds
+    # to a column, (eg. Name) and each value for that key is the value for that row 
+    list_of_players = []
+    for row in results:
+        row_dict = {}
+        for i in range(len(columns)):
+            column_name = columns[i]
+            column_value = row[i]
+            row_dict[column_name] = column_value
+        list_of_players.append(row_dict)  
+
+    cursor.close()
+    cnx.close()
+
+    return render_template('scoreboard.html', list_of_players = list_of_players)
 
 # This loads a test page to make sure the HTML form of the player's guess
 # is correct and can be parsed for the game logic
