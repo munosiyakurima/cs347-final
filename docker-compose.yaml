@@ -1,11 +1,4 @@
 services:
-  app:
-    build: ./app
-    ports:
-      - "80:5000"
-    restart: on-failure
-    depends_on:
-      - "db"
   frontend:
     build: ./frontend
     ports:
