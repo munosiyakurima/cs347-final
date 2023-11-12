@@ -3,7 +3,7 @@ from flask import render_template
 from flask import request
 from flask import redirect, url_for
 import random
-#import mysql.connector
+import mysql.connector
 
 app = Flask(__name__, 
         static_url_path='/static',
