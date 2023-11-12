@@ -84,6 +84,7 @@ def testdisplay():
         print(i)
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
+    cur_game = game_logic.guess_checker()
 
     return render_template('testdisplay.html', playerguess=playerguess)
 
