@@ -78,8 +78,11 @@ def scoreboard():
 @app.route('/testdisplay', methods = ['GET'])
 def testdisplay():
     playerguess = []
+    num = 1
     for i in request.args:
-        playerguess.append(request.args.get(i))
+        print(i)
+        playerguess.append(request.args.get("color" + str(num)))
+        num += 1
 
     return render_template('testdisplay.html', playerguess=playerguess)
 
