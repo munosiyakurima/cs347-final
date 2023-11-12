@@ -7,15 +7,12 @@ max_password_len = 4
 max_password_attempts = 4
 allow_repeats = False
 attempts = 0
-master_password = []
 board = game_board.GameBoard(max_password_len, max_password_attempts)
 
 rules = []
 
 #Creates a randomized list of colors to act as the game's password
 def password_generator():
-    global master_password
-    password = []
     if not (allow_repeats):
         password = random.sample(COLOR_MASTER, max_password_len)
     else:
@@ -24,7 +21,9 @@ def password_generator():
             if (color in password) and (password.count(color) <= 2):
                 password.append(color)
 
-    master_password = password
+    return password
+
+master_password = password_generator()
 
 #Makes sure user's guess is the right length and has viable colors    
 def valid_moves(user_guess: str):
@@ -37,6 +36,8 @@ def valid_moves(user_guess: str):
 
 #Parses the user's guess to see what they got correct. Prints out relevant information and returns false if there are any incorrect guesses
 def guess_checker(user_guess):
+    global master_password
+    print(user_guess)
     guess = user_guess
     correct = 0
     false_position = 0
@@ -82,7 +83,7 @@ def main():
         attempts += 1
 
         #If the user's guess is correct, end the game
-        if(guess_checker(user_guess, password)):
+        if(guess_checker(user_guess)):
             finished = True
             print("Code Broken! You win!!")
             print

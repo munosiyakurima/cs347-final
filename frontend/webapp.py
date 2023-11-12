@@ -81,11 +81,11 @@ def testdisplay():
     playerguess = []
     num = 1
     for i in request.args:
-        print(i)
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
-    cur_game = game_logic.guess_checker()
-
+    
+    cur_game = game_logic.guess_checker(playerguess)
+    
     return render_template('testdisplay.html', playerguess=playerguess)
 
 # @app.route('/insert')
