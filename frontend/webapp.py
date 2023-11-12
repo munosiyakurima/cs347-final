@@ -4,7 +4,7 @@ from flask import request
 from flask import redirect, url_for
 import random
 import mysql.connector
-import frontend.game_logic as game_logic
+import game_logic
 
 app = Flask(__name__, 
         static_url_path='/static',
