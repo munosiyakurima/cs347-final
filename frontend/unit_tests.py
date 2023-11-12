@@ -1,5 +1,5 @@
 import unittest
-from game_logic import *
+from frontend.game_logic import *
 
 class TestGameLogic(unittest.TestCase):
     def test_password_generator(self):
