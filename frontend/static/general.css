@@ -131,3 +131,10 @@ img.wip {
     width: 35%;
     height: 10%;
 }
+
+.centered-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; /* Adjust height as needed */
+}

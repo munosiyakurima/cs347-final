@@ -6,8 +6,16 @@
 
 {% block content %}
 
+
+
     <div class="wip">
-        <p style="font-size:6em"><em>Under Construction</em></p>
+        <p style="font-size: 6em;"><em>Enter Your Player Name Below</em></p>
     </div>
 
+    <div class="centered-form">
+        <form action="/insert" method="POST">
+            <p> Player <input type="text" player="name" /> </p>
+            <p> <input type="submit" value="Submit" /> </p>
+        </form>
+    </div>
 {% endblock content %}

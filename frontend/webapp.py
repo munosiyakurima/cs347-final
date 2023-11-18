@@ -40,6 +40,9 @@ def creategame():
 # Loads the game page, for playing a unique game of Mastermind
 @app.route('/game')
 def game():
+    player_name = request.args.get('player')
+
+    print("Welcome, {player_name}! Let's start the game.")
     return render_template('game.html')
 
 # Retrieves data about each player from the DB, transforms it into a readable format and renders the scoreboard page
@@ -91,45 +94,57 @@ def testdisplay():
         return render_template('home.html')
     return render_template('testdisplay.html', playerguess=cur_game)
 
-# @app.route('/insert')
-# def insert(name):
-#     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
-#     cursor = cnx.cursor(buffered=True)
+@app.route('/insert', methods=['POST'])  # Add methods=['POST'] to accept POST requests
+def insert():
+    # Retrieve player name from the form
+    player_name = request.form['name']
 
-#     query = "INSERT into PlayerData (name) VALUES ("+ name +");"
+    # Establish connection to the database
+    cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
+    cursor = cnx.cursor()
 
-#     cursor.execute(query)
+    # Prepare SQL query (use parameterized query to avoid SQL injection)
+    query = "INSERT INTO PlayerData (name) VALUES (%s)"
+    data = (player_name,)
 
-#     cnx.commit()
+    # Execute query
+    cursor.execute(query, data)
+    cnx.commit()
 
-#     return "Welcome, " + name
+    # Close database connection
+    cursor.close()
+    cnx.close()
+
+    # Return a response to the user
+    return "Welcome" + player_name
+
 
 @app.route('/lookup')
 def direct_form():
     return render_template('lookup.html')
 
-# @app.route('/player', methods = ['POST'])
-# def lookup():
-#     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
-#     cursor = cnx.cursor(buffered=True)
-#     form_data = request.form
-#     player_name = form_data['name']
+@app.route('/player', methods = ['POST'])
+def lookup():
+    cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
+    cursor = cnx.cursor(buffered=True)
+    form_data = request.form
+    player_name = form_data['name']
     
-#     query = "SELECT name, gameID, moves, attempts, gameComplete FROM PlayerData WHERE name = '" + player_name + "'";
+    query = "SELECT name, gameID, moves, attempts, gameComplete FROM PlayerData WHERE name = '" + player_name + "'";
     
-#     q_list = query.split(';')
-#     for q in q_list:
-#         if (len(q) > 2):
-#             cursor.execute(q) 
+    q_list = query.split(';')
+    for q in q_list:
+        if (len(q) > 2):
+            cursor.execute(q) 
 
-#     cnx.commit()
+    cnx.commit()
 
-#     output_str = ""
-#     for data in cursor:
-#         for item in data:
-#             output_str = output_str + str(item) + ",   "
-#         output_str = output_str + "\n"
+    output_str = ""
+    for data in cursor:
+        for item in data:
+            output_str = output_str + str(item) + ",   "
+        output_str = output_str + "\n"
 
-#     return render_template('player.html', output = output_str)
+    return render_template('player.html', output = output_str)
 
 app.run(host='0.0.0.0', port=5500)
