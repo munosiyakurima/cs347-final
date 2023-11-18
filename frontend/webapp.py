@@ -88,7 +88,7 @@ def testdisplay():
     cur_game = game_logic.guess_checker(playerguess)
     # guess = jsonify(cur_game)
     if cur_game == 0:
-        return render_template('home.html')
+        return render_template('win.html')
     return render_template('testdisplay.html', playerguess=cur_game)
 
 # @app.route('/insert')
