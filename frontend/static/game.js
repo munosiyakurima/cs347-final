@@ -42,11 +42,13 @@ function setUpColors(colorList) {
             colorButton.style.backgroundColor = colorList[i];
 
             // creating the icons to show the user's current password
-            const colorPassIcon = document.createElement("div");
-            colorPassIcon.classList.add("coloricon");
-            colorPassIcon.style.backgroundColor = emptyIcon;
-            
-            playerPassword.appendChild(colorPassIcon);
+            if (i < maxPasswordLen) {
+                const colorPassIcon = document.createElement("span");
+                colorPassIcon.classList.add("coloricon");
+                colorPassIcon.style.backgroundColor = emptyIcon;
+                playerPassword.appendChild(colorPassIcon);
+            }
+
             colorLabel.appendChild(colorButton);
             colorOptions.appendChild(colorLabel);
         }
@@ -89,6 +91,7 @@ function checkOptions(maxPassLen) {
 // updates the stored information of the current password
 function updateCurrentPassword() {
     const activeEle = document.activeElement;
+    const playerPassword = document.getElementById("")
     let activeEleID = activeEle.id;
     // making sure the active elemen is a color the player can choose
     if (activeEle.type == "checkbox") { 

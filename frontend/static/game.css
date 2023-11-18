@@ -88,7 +88,7 @@ Properties for input and forms
     justify-content: center;
 }
 
-.controls, .colorlabel {
+.controls, .colorlabel, .currentpassword {
     display: flex;
     align-items: center;
     align-content: center;
@@ -104,6 +104,17 @@ Properties for input and forms
     overflow: visible;
     background-color: rgb(164, 157, 170);
     box-shadow: 0 1em 0 0 rgb(94, 90, 99);
+    border-radius: .75em;
+    flex-direction: column;
+}
+
+.currentpassword {
+    position: relative;
+    margin: 2em auto;
+    padding: 1em 1em .05em 1em;
+    max-width: fit-content;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0.26);
     border-radius: .75em;
     flex-direction: column;
 }
