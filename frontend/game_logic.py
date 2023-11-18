@@ -23,7 +23,8 @@ def password_generator():
 
     return password
 
-master_password = password_generator()
+#master_password = password_generator()
+master_password = ['blue', 'red', 'pink', 'green']
 
 #Makes sure user's guess is the right length and has viable colors    
 def valid_moves(user_guess: str):
@@ -52,13 +53,17 @@ def guess_checker(user_guess):
                 empty += 1
     
     if(correct == max_password_len):
-        return True
-    print("There are " + str(correct) + " correct in the right position")
-    print("There are " + str(false_position) + " correct in the wrong position ")
-    print()
-    return False
+        return 0
+    # print("There are " + str(correct) + " correct in the right position")
+    # print("There are " + str(false_position) + " correct in the wrong position ")
+    # print()
+    res = {
+        'red': correct,
+        'white': false_position
+    }
+    return res
 
-def main():
+'''def main():
     global attempts
     password = password_generator()
     board.display_board()
@@ -104,3 +109,4 @@ def main():
 
 if __name__ == "__main__": 
     main()
+    '''

@@ -5,6 +5,7 @@ from flask import redirect, url_for
 import random
 import mysql.connector
 import game_logic
+from flask import jsonify
 
 app = Flask(__name__, 
         static_url_path='/static',
@@ -49,7 +50,7 @@ def scoreboard():
     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
     cursor = cnx.cursor(buffered=True)
     
-    query = "SELECT name, gameID, attempts FROM PlayerData WHERE gameComplete = TRUE";
+    query = "SELECT name, gameID, attempts FROM PlayerData WHERE gameComplete = TRUE"
     
     cursor.execute(query) 
 
@@ -85,8 +86,10 @@ def testdisplay():
         num += 1
     
     cur_game = game_logic.guess_checker(playerguess)
-    
-    return render_template('testdisplay.html', playerguess=playerguess)
+    # guess = jsonify(cur_game)
+    if cur_game == 0:
+        return render_template('home.html')
+    return render_template('testdisplay.html', playerguess=cur_game)
 
 # @app.route('/insert')
 # def insert(name):
