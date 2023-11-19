@@ -110,18 +110,20 @@ def update():
     else:
         return redirect
 
-@app.route('/insert', methods=['POST'])  # Add methods=['POST'] to accept POST requests
+@app.route('/insert', methods=['POST'])  
 def insert():
     # Retrieve player name from the form
-    player_name = request.form['name']
+    
+    form_data = request.form
+    player_name = form_data['player']
 
     # Establish connection to the database
     cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
-    cursor = cnx.cursor()
+    cursor = cnx.cursor(buffered=True)
 
     # Prepare SQL query (use parameterized query to avoid SQL injection)
     query = "INSERT INTO PlayerData (name) VALUES (%s)"
-    data = (player_name,)
+    data = (player_name,)  # Data tuple
 
     # Execute query
     cursor.execute(query, data)
@@ -131,9 +133,18 @@ def insert():
     cursor.close()
     cnx.close()
 
-    # Return a response to the user
-    return "Welcome" + player_name
+    # query1 = "SELECT gameID FROM PlayerData WHERE name = %s"
+    # data = (player_name,)
 
+    # cursor.execute(query1, data)
+    # game_id = cursor.fetchone()  # Fetch the gameID
+
+    # # Close database connection
+    # cursor.close()
+    # cnx.close()
+
+    # Return a response to the user
+    return "Welcome, " + player_name
 
 @app.route('/lookup')
 def direct_form():
