@@ -45,6 +45,7 @@ function setUpColors(colorList) {
             if (i < maxPasswordLen) {
                 const colorPassIcon = document.createElement("span");
                 colorPassIcon.classList.add("coloricon");
+                colorPassIcon.id = "icon" + (i+1).toString();
                 colorPassIcon.style.backgroundColor = emptyIcon;
                 playerPassword.appendChild(colorPassIcon);
             }
@@ -91,7 +92,7 @@ function checkOptions(maxPassLen) {
 // updates the stored information of the current password
 function updateCurrentPassword() {
     const activeEle = document.activeElement;
-    const playerPassword = document.getElementById("")
+    const playerPassword = document.getElementById("currentpassword")
     let activeEleID = activeEle.id;
     // making sure the active elemen is a color the player can choose
     if (activeEle.type == "checkbox") { 
@@ -108,7 +109,14 @@ function updateCurrentPassword() {
         currentPassword.forEach(color => { 
             let similarEle = document.getElementById(color);
             similarEle.name = "color" + counter.toString();
+
+            document.getElementById("icon" + counter.toString()).style.backgroundColor = color;
             counter++;
-        }); 
+        });
+        if (counter < maxPasswordLen+1) {
+            document.getElementById("icon" + counter.toString()).style.backgroundColor = emptyIcon;
+            counter++;
+        }
+
     }
 }
