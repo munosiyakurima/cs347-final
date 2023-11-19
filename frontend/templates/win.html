@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Page</title>
+    <title>Code Breaker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: blueviolet;
+        }
+
+        h1 {
+            color:aliceblue;
+        }
+
+        p {
+            font-size: 20px;
+            color: aliceblue;
+            margin: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <p> you broke the code! </p>
+    <h1>Congratulations!</h1>
+    <p>You broke the code!</p>
+    <img class="wip" src="{{ url_for('static', filename='win.jpg') }}" style="float:center;" alt="You Won!">
 </body>
 </html>

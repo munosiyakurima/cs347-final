@@ -27,6 +27,11 @@ def home():
     return render_template('home.html')
 
 
+@app.route('/win')
+def win():
+    return render_template('win.html')
+
+
 # loads the "how to play" page for general game rules and instructions
 @app.route('/howtoplay')
 def howtoplay():

@@ -7,29 +7,29 @@
 {% block content %}
 
     <div class="wip">
-        <p style="font-size:6em"><em>Under Construction</em></p>
+        <p style="font-size:6em"><em>Mastermind</em></p>
     </div>
 
     <div class="home-body">
         <h2></h2>
-        <img class="wip" src="{{ url_for('static', filename='MM_wip.png') }}" style="float:right;" alt="Under Construction">
         <p>At the start of every game, a randomized password will be generated. Using your provided colors, your job
         is to guess not just the colors in the password, but their order too.
         </p>
+        <img class="wip" src="{{ url_for('static', filename='gameboard.jpg') }}" style="float:center;" alt="Game Board">
     </div>
 
     <div class="home-body">
         <h2></h2>
-        <img class="wip" src="{{ url_for('static', filename='MM_wip.png') }}" style="float:right;" alt="Under Construction">
         <p>Create your password attempt by pressing any of the provided colors. A preview of your current guess is displayed above.
         You can change remove colors from your guess by pressing them again. Once your password is complete, 
         the "submit" button will be available to press.
         </p>
+        <img class="wip" src="{{ url_for('static', filename='user password.jpg') }}" style="float:center;" alt="User Selecting Password">
     </div>
 
     <div class="home-body">
         <h2></h2>
-        <img class="wip" src="{{ url_for('static', filename='MM_wip.png') }}" style="float:right;" alt="Under Construction">
+        <!-- <img class="wip" src="{{ url_for('static', filename='MM_wip.png') }}" style="float:right;" alt="Under Construction"> -->
         <p>Your guess is either right or wrong. If it's right, you win! But if it's wrong, you'll have to guess again. 
         But don't worry: <strong>hints</strong> will be given for every correct color in your guess. <strong>Faint Hints</strong> mean that one of your guess's
         colors is in the original password. <strong>Strong Hints</strong> mean one of the colors is in the password <em>and</em> is in the correct
