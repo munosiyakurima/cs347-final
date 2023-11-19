@@ -45,6 +45,7 @@ def creategame():
 # Loads the game page, for playing a unique game of Mastermind
 @app.route('/game')
 def game():
+    game_logic.reset_game()
     return render_template('game.html')
 
 # Retrieves data about each player from the DB, transforms it into a readable format and renders the scoreboard page

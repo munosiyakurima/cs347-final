@@ -37,7 +37,8 @@ def valid_moves(user_guess: str):
 
 #Parses the user's guess to see what they got correct. Prints out relevant information and returns false if there are any incorrect guesses
 def guess_checker(user_guess):
-    global master_password
+    global master_password, attempts
+    attempts += 1
     print(user_guess)
     guess = user_guess
     correct = 0
@@ -59,9 +60,15 @@ def guess_checker(user_guess):
     # print()
     res = {
         'red': correct,
-        'white': false_position
+        'white': false_position,
+        'attempts': attempts
     }
     return res
+
+def reset_game():
+    global master_password, attempts
+    attempts = 0
+    master_password = password_generator()
 
 '''def main():
     global attempts
