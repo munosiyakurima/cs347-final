@@ -92,7 +92,6 @@ function checkOptions(maxPassLen) {
 // updates the stored information of the current password
 function updateCurrentPassword() {
     const activeEle = document.activeElement;
-    const playerPassword = document.getElementById("currentpassword")
     let activeEleID = activeEle.id;
     // making sure the active elemen is a color the player can choose
     if (activeEle.type == "checkbox") { 
