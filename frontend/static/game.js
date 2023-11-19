@@ -119,3 +119,22 @@ function updateCurrentPassword() {
 
     }
 }
+
+$(document).ready(function(){
+    $("#passwordattempt").on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/update',
+            type: 'POST',
+            data: $(this).serializ(),
+            success: function(data){
+                let cur_row = $('#gameInfo tr').eq(1);
+                let cur_cells = cur_row.children('td');
+                $(cur_cells[2]).html(data.red);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+});

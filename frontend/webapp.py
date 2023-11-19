@@ -108,7 +108,7 @@ def update():
     if cur_game == 0:
         return render_template('home.html') #render results page
     else:
-        return redirect
+        return jsonify(cur_game)
 
 @app.route('/insert', methods=['POST'])  # Add methods=['POST'] to accept POST requests
 def insert():

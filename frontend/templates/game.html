@@ -13,9 +13,9 @@
     <div class="board">
         <table class="gameInfo" id="gameInfo">
             <tr>
-                <th style="width:10%">Turn</th>
-                <th style="width:65%">Guess</th>
-                <th style="width:25%">Hint</th>
+                <th style="width:10%" id="Turn">Turn</th>
+                <th style="width:65%" id="Guesses">Guesses</th>
+                <th style="width:25%" id="Hints">Hints</th>
             </tr>
           </table>
     </div>
@@ -27,7 +27,7 @@
     </div>
     
     <div class="controls">
-        <form id="passwordattempt" action="{{ url_for('update') }}" method="post">
+        <form id="passwordattempt">
         <input type="submit" id="submit" class="submit" value="Waiting" disabled>
         </form>
     </div>
@@ -37,25 +37,6 @@
         setUpBoard(8);
         setUpColors(colorList);
     </script> 
-
-    <script>
-    $(document).ready(function(){
-        $("#nameForm").on('submit', function(event){
-            event.preventDefault();
-            $.ajax({
-                url: '/update',
-                type: 'POST',
-                data: $(this).serialize(),
-                success: function(response){
-                    $('#result').html("First Name: " + response.firstName + ", Last Name: " + response.lastName);
-                },
-                error: function(error){
-                    console.log(error);
-                }
-            });
-        });
-    });
-    </script>
 
 </body>
 </html>
