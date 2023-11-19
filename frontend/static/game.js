@@ -1,5 +1,6 @@
 let currentPassword = [];
 const maxPasswordLen = 4;
+let emptyIcon = "rgba(0, 0, 0, 0.49)";
 
 // creates the gameboard given the max number of attempts for the game
 function setUpBoard(maxAttempts) {
@@ -20,6 +21,7 @@ function setUpBoard(maxAttempts) {
 
 // creates the given colors as buttons and icons to be used for the game
 function setUpColors(colorList) {
+    const playerPassword = document.getElementById("currentpassword");
     const colorOptions = document.getElementById("passwordattempt");
         for (let i = 0; i < 6; i++) {
             // creating a label to not get broswer warnings
@@ -38,6 +40,15 @@ function setUpColors(colorList) {
             colorButton.value = colorList[i];
             colorButton.onclick = function () {toggleUnmarked(colorButton.id)};
             colorButton.style.backgroundColor = colorList[i];
+
+            // creating the icons to show the user's current password
+            if (i < maxPasswordLen) {
+                const colorPassIcon = document.createElement("span");
+                colorPassIcon.classList.add("coloricon");
+                colorPassIcon.id = "icon" + (i+1).toString();
+                colorPassIcon.style.backgroundColor = emptyIcon;
+                playerPassword.appendChild(colorPassIcon);
+            }
 
             colorLabel.appendChild(colorButton);
             colorOptions.appendChild(colorLabel);
@@ -97,7 +108,33 @@ function updateCurrentPassword() {
         currentPassword.forEach(color => { 
             let similarEle = document.getElementById(color);
             similarEle.name = "color" + counter.toString();
+
+            document.getElementById("icon" + counter.toString()).style.backgroundColor = color;
             counter++;
-        }); 
+        });
+        if (counter < maxPasswordLen+1) {
+            document.getElementById("icon" + counter.toString()).style.backgroundColor = emptyIcon;
+            counter++;
+        }
+
     }
 }
+
+$(document).ready(function(){
+    $("#passwordattempt").on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/update',
+            type: 'POST',
+            data: $(this).serializ(),
+            success: function(data){
+                let cur_row = $('#gameInfo tr').eq(1);
+                let cur_cells = cur_row.children('td');
+                $(cur_cells[2]).html(data.red);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+});
