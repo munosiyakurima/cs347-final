@@ -94,6 +94,22 @@ def testdisplay():
         return render_template('home.html')
     return render_template('testdisplay.html', playerguess=cur_game)
 
+@app.route('/update', methods = ['POST'])
+def update():
+    playerguess = []
+    num = 1
+    for i in request.form:
+        #playerguess.append(request.args.get("color" + str(num)))
+        playerguess.append(request.form["color" + str(num)])
+        num += 1
+    
+    cur_game = game_logic.guess_checker(playerguess)
+    # guess = jsonify(cur_game)
+    if cur_game == 0:
+        return render_template('home.html') #render results page
+    else:
+        return redirect
+
 @app.route('/insert', methods=['POST'])  # Add methods=['POST'] to accept POST requests
 def insert():
     # Retrieve player name from the form
