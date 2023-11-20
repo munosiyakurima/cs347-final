@@ -39,7 +39,8 @@ def valid_moves(user_guess: str):
 def guess_checker(user_guess):
     global master_password, attempts
     attempts += 1
-    print(user_guess)
+    print("user guess: ", user_guess)
+    print("master pasword: ", master_password)
     guess = user_guess
     correct = 0
     false_position = 0
@@ -61,18 +62,14 @@ def guess_checker(user_guess):
     res = {
         'red': correct,
         'white': false_position,
-<<<<<<< HEAD
         'attempts': attempts
-=======
-        'attempts' : attempts
->>>>>>> 024d9a38df46f14f2b1117e1b8093f77f9d05e5c
     }
     return res
 
 def reset_game():
     global master_password, attempts
     attempts = 0
-    master_password = password_generator()
+    #master_password = password_generator()
 
 '''def main():
     global attempts

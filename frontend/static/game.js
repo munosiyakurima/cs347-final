@@ -124,9 +124,11 @@ $(document).ready(function(){
     $("#passwordattempt").on('submit', function(event){
         event.preventDefault();
         $.ajax({
-            url: '/update',
-            type: 'POST',
-            data: $(this).serializ(),
+            // url: '/update',
+            // type: 'POST',
+            url: '/testdisplay',
+            type: 'GET',
+            data: $(this).serialize(),
             success: function(data){
                 let cur_row = $('#gameInfo tr').eq(1);
                 let cur_cells = cur_row.children('td');
