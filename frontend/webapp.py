@@ -88,8 +88,6 @@ def update():
     for i in request.args:
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
-    
-    
     cur_game = game_logic.guess_checker(playerguess)
     if (cur_game['isComplete'] > 0):
         session['data'] = cur_game
@@ -97,12 +95,12 @@ def update():
     # if cur_game == 0:
     #     return render_template('win.html')
     return jsonify(cur_game)
-    
+ 
+# Takes the player's results and displays them    
 @app.route('/gamecomplete')
 def gamecomplete():
     game_info = session['data']
-    print(game_info['guess'])
-    return render_template('win.html') #render results page
+    return render_template('win.html') # render results page
 
 @app.route('/insert', methods=['POST'])  
 def insert():

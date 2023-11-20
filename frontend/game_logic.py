@@ -7,7 +7,7 @@ max_password_len = 4
 max_password_attempts = 8
 allow_repeats = False
 attempts = 0
-board = game_board.GameBoard(max_password_len, max_password_attempts)
+board = game_board.GameBoard(max_password_len, max_password_attempts) # REMOVE LATER
 
 rules = []
 
@@ -22,9 +22,6 @@ def password_generator():
                 password.append(color)
 
     return password
-
-#master_password = password_generator()
-master_password = ['blue', 'red', 'pink', 'green']
 
 #Makes sure user's guess is the right length and has viable colors    
 def valid_moves(user_guess: str):
@@ -74,7 +71,7 @@ def guess_checker(user_guess):
 def reset_game():
     global master_password, attempts
     attempts = 0
-    #master_password = password_generator()
+    master_password = password_generator()
 
 '''def main():
     global attempts
