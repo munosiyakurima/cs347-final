@@ -1,7 +1,7 @@
 import random
 import game_board as game_board
 
-COLOR_MASTER = ['red', 'blue','white', 'orange', 'purple', 'magenta', 'green']
+COLOR_MASTER = ['red', 'blue','saddlebrown', 'pink', 'purple', 'green']
 
 max_password_len = 4
 max_password_attempts = 4
@@ -23,8 +23,6 @@ def password_generator():
 
     return password
 
-#master_password = password_generator()
-master_password = ['blue', 'red', 'pink', 'green']
 
 #Makes sure user's guess is the right length and has viable colors    
 def valid_moves(user_guess: str):
@@ -39,7 +37,8 @@ def valid_moves(user_guess: str):
 def guess_checker(user_guess):
     global master_password, attempts
     attempts += 1
-    print(user_guess)
+    print("user guess: ", user_guess)
+    print("master password: ", master_password)
     guess = user_guess
     correct = 0
     false_position = 0
@@ -69,6 +68,7 @@ def reset_game():
     global master_password, attempts
     attempts = 0
     master_password = password_generator()
+    #master_password = ['blue', 'red', 'pink', 'green']
 
 '''def main():
     global attempts
