@@ -84,28 +84,7 @@ def update():
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
 
-    result = ';'.join(playerguess)
 
-    # Establish a connection to the database
-    cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
-    cursor = cnx.cursor(buffered=True)
-
-    # Fetch the current moves for the player using their game ID (modify this based on your actual game logic)
-    # Replace with the actual game ID
-    cursor.execute("SELECT moves FROM PlayerData WHERE gameID = %s", (game_id,))
-    existing_moves = cursor.fetchone()[0]  # Fetch the existing moves
-
-    # Combine the existing moves with the new moves separated by a semicolon
-    new_moves = existing_moves + ';' + result if existing_moves else result
-
-    # Update moves column in the database for the specific game ID
-    update_query = "UPDATE PlayerData SET moves = %s WHERE gameID = %s"
-    cursor.execute(update_query, (new_moves, game_id))
-    cnx.commit()
-
-    # Close database connection
-    cursor.close()
-    cnx.close()   
     
     cur_game = game_logic.guess_checker(playerguess)
     if (cur_game['isComplete'] > 0):
