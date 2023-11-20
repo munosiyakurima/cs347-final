@@ -128,14 +128,6 @@ div.wip {
 }
 
 img.wip {
-<<<<<<< HEAD
-    width: 50%;
-    height: 20%;
-    position: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-=======
     width: 35%;
     height: 10%;
 }
@@ -145,5 +137,4 @@ img.wip {
     justify-content: center;
     align-items: center;
     height: 30vh; /* Adjust height as needed */
->>>>>>> 024d9a38df46f14f2b1117e1b8093f77f9d05e5c
 }

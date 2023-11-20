@@ -61,11 +61,7 @@ def guess_checker(user_guess):
     res = {
         'red': correct,
         'white': false_position,
-<<<<<<< HEAD
-        'attempts': attempts
-=======
         'attempts' : attempts
->>>>>>> 024d9a38df46f14f2b1117e1b8093f77f9d05e5c
     }
     return res
 
