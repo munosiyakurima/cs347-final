@@ -120,19 +120,30 @@ function updateCurrentPassword() {
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function(){ // updates the game page without refreshing
     $("#passwordattempt").submit(function(event){
         event.preventDefault();
-        console.log("submiting form data");
         $.ajax({
-            url: '/testdisplay',
+            url: '/update',
             type: 'GET',
             data: $('form').serialize(),
             success: function(response){
-                console.log(response);
-                let cur_row = $('#gameInfo tr').eq(response.attempts); // Target the third row
-                let cur_cells = cur_row.children('td');
-                $(cur_cells[2]).html("Red: " + response.red + "\nWhite: " + response.white); // Update the hint cell
+                if (response.isComplete > 0) { // check if the game is over
+                    window.location.href = '/gamecomplete'; 
+                } else { // else, update the game page
+                    let cur_row = $('#gameInfo tr').eq(response.attempts); // Target the current non-updated row of the board
+                    let cur_cells = cur_row.children('td');
+                    let lastGuess = document.createElement("div");
+                    lastGuess.classList.add("lastGuess");
+                    for (i = 0; i < maxPasswordLen; i++) {
+                        const colorPassIcon = document.createElement("span");
+                        colorPassIcon.classList.add("coloricon");
+                        colorPassIcon.style.backgroundColor = response.guess[i];
+                        lastGuess.appendChild(colorPassIcon);
+                        } 
+                    $(cur_cells[1]).html(lastGuess); // Update the guess cell with the player's last password
+                    $(cur_cells[2]).html("Red: " + response.red + "\nWhite: " + response.white); // Update the hint cell for the last password
+                }
             },
             error: function(error){
                 console.log(error);

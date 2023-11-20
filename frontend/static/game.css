@@ -94,20 +94,27 @@ Properties for input and forms
     flex-direction: column;
 }
 
-.currentpassword {
+.currentpassword, .lastGuess {
     position: relative;
     margin: 2em auto;
     padding: 1em 1em 1em 1em;
-    max-width: fit-content;
-    overflow: visible;
     background-color: rgba(0, 0, 0, 0.26);
     border-radius: .75em;
+    overflow: visible;
     flex-direction: row;
     display: flex;
     flex-wrap: nowrap;
     align-content: center;
     justify-content: center;
     align-items: center;
+}
+
+.currentpassword {
+    max-width: fit-content;
+}
+
+.lastGuess {
+    transform: scale(.75);
 }
 
 .colorlabel {

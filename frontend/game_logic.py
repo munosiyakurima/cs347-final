@@ -4,7 +4,7 @@ import game_board as game_board
 COLOR_MASTER = ['red', 'blue', 'saddlebrown', 'pink', 'purple', 'green']
 
 max_password_len = 4
-max_password_attempts = 4
+max_password_attempts = 8
 allow_repeats = False
 attempts = 0
 board = game_board.GameBoard(max_password_len, max_password_attempts)
@@ -45,6 +45,7 @@ def guess_checker(user_guess):
     correct = 0
     false_position = 0
     empty = 0
+    isComplete = 0
     for i in range(max_password_len):
         if(guess[i] == master_password[i]):
             correct += 1
@@ -54,8 +55,10 @@ def guess_checker(user_guess):
             else:
                 empty += 1
     
-    if(correct == max_password_len):
-        return 0
+    if (correct == max_password_len):
+        isComplete = 1
+    elif (attempts == max_password_attempts):
+        isComplete = 2
     # print("There are " + str(correct) + " correct in the right position")
     # print("There are " + str(false_position) + " correct in the wrong position ")
     # print()
@@ -63,7 +66,8 @@ def guess_checker(user_guess):
         'red': correct,
         'white': false_position,
         'attempts' : attempts,
-        'guess' : guess
+        'guess' : guess,
+        'isComplete' : isComplete
     }
     return res
 

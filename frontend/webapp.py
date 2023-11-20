@@ -1,11 +1,7 @@
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import random
 import mysql.connector
 import game_logic
-from flask import jsonify
 
 app = Flask(__name__, 
         static_url_path='/static',
@@ -85,37 +81,28 @@ def scoreboard():
 
 # This loads a test page to make sure the HTML form of the player's guess
 # is correct and can be parsed for the game logic
-@app.route('/testdisplay', methods = ['GET'])
-def testdisplay():
-    print("IN TESTDISPLAY")
+@app.route('/update', methods = ['GET'])
+def update():
     playerguess = []
     num = 1
     for i in request.args:
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
     
+    
     cur_game = game_logic.guess_checker(playerguess)
+    if (cur_game['isComplete'] > 0):
+        session['data'] = cur_game
     # guess = jsonify(cur_game)
-    if cur_game == 0:
-        return render_template('win.html')
+    # if cur_game == 0:
+    #     return render_template('win.html')
     return jsonify(cur_game)
-
-@app.route('/update', methods = ['POST'])
-def update():
-    playerguess = []
-    num = 1
-    for i in request.form:
-        #playerguess.append(request.args.get("color" + str(num)))
-        playerguess.append(request.form["color" + str(num)])
-        num += 1
-    print(playerguess)
-    cur_game = game_logic.guess_checker(playerguess)
-
-    # guess = jsonify(cur_game)
-    if cur_game == 0:
-        return render_template('win.html') #render results page
-    else:
-        return jsonify(playerguess)
+    
+@app.route('/gamecomplete')
+def gamecomplete():
+    game_info = session['data']
+    print(game_info['guess'])
+    return render_template('win.html') #render results page
 
 @app.route('/insert', methods=['POST'])  
 def insert():
