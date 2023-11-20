@@ -8,13 +8,7 @@ app = Flask(__name__,
         static_folder='static',
         template_folder='templates')
 
-game_id = ''
-for i in range(15):
-    game_id += str(random.randint(0, 9))
-
-app.config['SESSION_TYPE'] = 'filesystem'
-
-app.secret_key = game_id
+game_id = 0
 
 # loads the home page
 @app.route('/')
@@ -22,12 +16,6 @@ app.secret_key = game_id
 def home():
     print("In HOME page")
     return render_template('home.html')
-
-
-@app.route('/win')
-def win():
-    return render_template('win.html')
-
 
 # loads the "how to play" page for general game rules and instructions
 @app.route('/howtoplay')
@@ -45,6 +33,31 @@ def game():
     print("In GAME page")
     game_logic.reset_game()
     return render_template('game.html')
+
+# This loads a test page to make sure the HTML form of the player's guess
+# is correct and can be parsed for the game logic
+@app.route('/update', methods = ['GET'])
+def update():
+    global game_id
+    playerguess = []
+    num = 1
+    for i in request.args:
+        playerguess.append(request.args.get("color" + str(num)))
+        num += 1
+    cur_game = game_logic.guess_checker(playerguess)
+    if (cur_game['isComplete'] > 0):
+        session['data'] = cur_game
+    return jsonify(cur_game)
+ 
+# Takes the player's results and displays them    
+@app.route('/gamecomplete')
+def gamecomplete():
+    game_info = session['data']
+    attempts = game_info['attempts']
+    masterPass = game_info['masterPass']
+    gameState = game_info['isComplete']
+    return render_template('results.html', 
+                           attempts=attempts, masterPass=masterPass, gameState=gameState)
 
 # Retrieves data about each player from the DB, transforms it into a readable format and renders the scoreboard page
 # Implemented by Aidan Roessler from team Vaas
@@ -79,35 +92,10 @@ def scoreboard():
 
     return render_template('scoreboard.html', list_of_players = list_of_players)
 
-# This loads a test page to make sure the HTML form of the player's guess
-# is correct and can be parsed for the game logic
-@app.route('/update', methods = ['GET'])
-def update():
-    playerguess = []
-    num = 1
-    for i in request.args:
-        playerguess.append(request.args.get("color" + str(num)))
-        num += 1
-    cur_game = game_logic.guess_checker(playerguess)
-    if (cur_game['isComplete'] > 0):
-        session['data'] = cur_game
-    # guess = jsonify(cur_game)
-    # if cur_game == 0:
-    #     return render_template('win.html')
-    return jsonify(cur_game)
- 
-# Takes the player's results and displays them    
-@app.route('/gamecomplete')
-def gamecomplete():
-    game_info = session['data']
-    attempts = game_info['attempts']
-    masterPass = game_info['masterPass']
-    gameState = game_info['isComplete']
-    return render_template('results.html', 
-                           attempts=attempts, masterPass=masterPass, gameState=gameState)
-
 @app.route('/insert', methods=['POST'])  
 def insert():
+    game_logic.reset_game()
+    global game_id
     # Retrieve player name from the form
     
     form_data = request.form
@@ -125,22 +113,19 @@ def insert():
     cursor.execute(query, data)
     cnx.commit()
 
+    # Retrieve the last inserted ID (gameID)
+    cursor.execute("SELECT LAST_INSERT_ID()")
+    last_game_id = cursor.fetchone()[0]  # Fetch the last inserted gameID
+
+    # Store the retrieved gameID in the global variable
+    game_id = last_game_id
+
     # Close database connection
     cursor.close()
     cnx.close()
 
-    # query1 = "SELECT gameID FROM PlayerData WHERE name = %s"
-    # data = (player_name,)
-
-    # cursor.execute(query1, data)
-    # game_id = cursor.fetchone()  # Fetch the gameID
-
-    # # Close database connection
-    # cursor.close()
-    # cnx.close()
-
     # Return a response to the user
-    return "Welcome, " + player_name
+    return "Welcome, " + player_name + " your Game ID is " + str(game_id) + render_template('game.html')
 
 @app.route('/lookup')
 def direct_form():
