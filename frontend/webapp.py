@@ -24,6 +24,7 @@ app.secret_key = game_id
 @app.route('/')
 @app.route('/home')
 def home():
+    print("In HOME page")
     return render_template('home.html')
 
 
@@ -45,6 +46,7 @@ def creategame():
 # Loads the game page, for playing a unique game of Mastermind
 @app.route('/game')
 def game():
+    print("In GAME page")
     game_logic.reset_game()
     return render_template('game.html')
 
@@ -85,6 +87,7 @@ def scoreboard():
 # is correct and can be parsed for the game logic
 @app.route('/testdisplay', methods = ['GET'])
 def testdisplay():
+    print("IN TESTDISPLAY")
     playerguess = []
     num = 1
     for i in request.args:
@@ -107,11 +110,12 @@ def update():
         num += 1
     
     cur_game = game_logic.guess_checker(playerguess)
+
     # guess = jsonify(cur_game)
     if cur_game == 0:
         return render_template('home.html') #render results page
     else:
-        return jsonify(cur_game)
+        return jsonify(playerguess)
 
 @app.route('/insert', methods=['POST'])  
 def insert():

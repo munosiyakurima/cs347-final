@@ -121,16 +121,15 @@ function updateCurrentPassword() {
 }
 
 $(document).ready(function(){
-    $("#passwordattempt").on('submit', function(event){
+    $("#passwordattempt").submit(function(event){
         event.preventDefault();
+        console.log("submiting form data");
         $.ajax({
-            url: '/update',
-            type: 'POST',
-            data: $(this).serializ(),
-            success: function(data){
-                let cur_row = $('#gameInfo tr').eq(1);
-                let cur_cells = cur_row.children('td');
-                $(cur_cells[2]).html(data.red);
+            url: '/testdisplay',
+            type: 'GET',
+            data: $('form').serialize(),
+            success: function(response){
+                $("#gameInfo tr:nth-child(1) td:second").html(response);
             },
             error: function(error){
                 console.log(error);
