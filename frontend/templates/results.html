@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Breaker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: blueviolet;
+        }
+
+        h1 {
+            color:aliceblue;
+        }
+
+        p {
+            font-size: 20px;
+            color: aliceblue;
+            margin: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Congratulations!</h1>
+    <p>You broke the code!</p>
+    <p>Number of attempts: {{game_info.attempts}}</p>
+    <img class="wip" src="{{ url_for('static', filename='win.jpg') }}" style="float:center;" alt="You Won!">
+</body>
+</html>
+
+{% extends "base.html" %}
+
+{% block title %}Results{% endblock title %}
+
+{% block header1 %}Results{% endblock header1 %}
+
+{% block content %}
+
+    {% if gameState == 1 %}
+    <div class="results-body">
+        <h2>You Won!</h2>
+        <p class="home-p">
+        You broke the code!<br>
+        Number of attempts: {{attempts}}
+        <img class="wip" src="{{ url_for('static', filename='win.jpg') }}" style="float:center;" alt="You Won!">
+        </p>
+    </div>
+    {% elif gameState == 2 %}
+    <div class="results-body">
+        <h2>You Lost...</h2>
+        <p class="home-p">
+        Better luck next time!<br>
+        Number of attempts: {{attempts}}
+        <img class="wip" src="{{ url_for('static', filename='win.jpg') }}" style="float:center;" alt="You Won!">
+        </p>
+    </div>
+    {% endif %}
+
+    
+
+{% endblock content %}

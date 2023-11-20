@@ -100,7 +100,11 @@ def update():
 @app.route('/gamecomplete')
 def gamecomplete():
     game_info = session['data']
-    return render_template('win.html') # render results page
+    attempts = game_info['attempts']
+    masterPass = game_info['masterPass']
+    gameState = game_info['isComplete']
+    return render_template('results.html', 
+                           attempts=attempts, masterPass=masterPass, gameState=gameState)
 
 @app.route('/insert', methods=['POST'])  
 def insert():
