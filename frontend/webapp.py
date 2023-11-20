@@ -131,7 +131,7 @@ def insert():
     cnx.close()
 
     # Return a response to the user
-    return "Welcome, " + player_name + " your Game ID is " + str(game_id) + render_template('game.html')
+    return render_template('game.html', player=player_name, game_id=game_id)
 
 @app.route('/lookup')
 def direct_form():

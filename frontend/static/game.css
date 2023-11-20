@@ -36,7 +36,6 @@ Properties the showing the board (Previous Turns, Previous Attempts, Previous hi
 
 .board, .currentpassword {
     display: block;
-    /* animation: colorwarp 4s infinite alternate; */
     margin: 2em auto;
     max-width: fit-content;
     height: fit-content;
