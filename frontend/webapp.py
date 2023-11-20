@@ -108,12 +108,12 @@ def update():
         #playerguess.append(request.args.get("color" + str(num)))
         playerguess.append(request.form["color" + str(num)])
         num += 1
-    
+    print(playerguess)
     cur_game = game_logic.guess_checker(playerguess)
 
     # guess = jsonify(cur_game)
     if cur_game == 0:
-        return render_template('home.html') #render results page
+        return render_template('win.html') #render results page
     else:
         return jsonify(playerguess)
 

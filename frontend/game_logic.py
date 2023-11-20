@@ -69,7 +69,7 @@ def guess_checker(user_guess):
 def reset_game():
     global master_password, attempts
     attempts = 0
-    master_password = password_generator()
+    #master_password = password_generator()
 
 '''def main():
     global attempts
