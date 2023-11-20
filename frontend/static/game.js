@@ -132,7 +132,7 @@ $(document).ready(function(){
                 console.log(response);
                 let cur_row = $('#gameInfo tr').eq(response.attempts); // Target the third row
                 let cur_cells = cur_row.children('td');
-                $(cur_cells[2]).html("Red: ",response.red,"\nWhite: ", response.white); // Update the hint cell
+                $(cur_cells[2]).html("Red: " + response.red + "\nWhite: " + response.white); // Update the hint cell
             },
             error: function(error){
                 console.log(error);
