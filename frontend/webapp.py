@@ -8,7 +8,13 @@ app = Flask(__name__,
         static_folder='static',
         template_folder='templates')
 
-game_id = 0
+game_id = ''
+for i in range(15):
+    game_id += str(random.randint(0, 9))
+
+app.config['SESSION_TYPE'] = 'filesystem'
+
+app.secret_key = game_id
 
 # loads the home page
 @app.route('/')
@@ -77,14 +83,12 @@ def scoreboard():
 # is correct and can be parsed for the game logic
 @app.route('/update', methods = ['GET'])
 def update():
-    global game_id
     playerguess = []
     num = 1
     for i in request.args:
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
-
-
+   
     
     cur_game = game_logic.guess_checker(playerguess)
     if (cur_game['isComplete'] > 0):
