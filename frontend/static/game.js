@@ -129,7 +129,10 @@ $(document).ready(function(){
             type: 'GET',
             data: $('form').serialize(),
             success: function(response){
-                $("#gameInfo tr:nth-child(1) td:second").html(response);
+                console.log(response);
+                let cur_row = $('#gameInfo tr').eq(2); // Target the third row
+                let cur_cells = cur_row.children('td');
+                $(cur_cells[1]).html(response.red); // Update the second cell
             },
             error: function(error){
                 console.log(error);

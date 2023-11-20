@@ -98,7 +98,7 @@ def testdisplay():
     # guess = jsonify(cur_game)
     if cur_game == 0:
         return render_template('win.html')
-    return render_template('testdisplay.html', playerguess=cur_game)
+    return jsonify(cur_game)
 
 @app.route('/update', methods = ['POST'])
 def update():
