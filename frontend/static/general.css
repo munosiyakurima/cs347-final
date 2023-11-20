@@ -138,3 +138,21 @@ img.wip {
     align-items: center;
     height: 30vh; /* Adjust height as needed */
 }
+
+/*
+Properties for results page.
+*/
+.results-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.results-p {
+    font-size: 1.5em;
+    width: 40%;
+}
