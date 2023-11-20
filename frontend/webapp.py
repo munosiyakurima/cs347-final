@@ -8,13 +8,7 @@ app = Flask(__name__,
         static_folder='static',
         template_folder='templates')
 
-game_id = ''
-for i in range(15):
-    game_id += str(random.randint(0, 9))
-
-app.config['SESSION_TYPE'] = 'filesystem'
-
-app.secret_key = game_id
+game_id = 0
 
 # loads the home page
 @app.route('/')
@@ -83,12 +77,35 @@ def scoreboard():
 # is correct and can be parsed for the game logic
 @app.route('/update', methods = ['GET'])
 def update():
+    global game_id
     playerguess = []
     num = 1
     for i in request.args:
         playerguess.append(request.args.get("color" + str(num)))
         num += 1
-    
+
+    result = ';'.join(playerguess)
+
+    # Establish a connection to the database
+    cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
+    cursor = cnx.cursor(buffered=True)
+
+    # Fetch the current moves for the player using their game ID (modify this based on your actual game logic)
+    # Replace with the actual game ID
+    cursor.execute("SELECT moves FROM PlayerData WHERE gameID = %s", (game_id,))
+    existing_moves = cursor.fetchone()[0]  # Fetch the existing moves
+
+    # Combine the existing moves with the new moves separated by a semicolon
+    new_moves = existing_moves + ';' + result if existing_moves else result
+
+    # Update moves column in the database for the specific game ID
+    update_query = "UPDATE PlayerData SET moves = %s WHERE gameID = %s"
+    cursor.execute(update_query, (new_moves, game_id))
+    cnx.commit()
+
+    # Close database connection
+    cursor.close()
+    cnx.close()   
     
     cur_game = game_logic.guess_checker(playerguess)
     if (cur_game['isComplete'] > 0):
@@ -106,6 +123,8 @@ def gamecomplete():
 
 @app.route('/insert', methods=['POST'])  
 def insert():
+    game_logic.reset_game()
+    global game_id
     # Retrieve player name from the form
     
     form_data = request.form
@@ -123,22 +142,19 @@ def insert():
     cursor.execute(query, data)
     cnx.commit()
 
+    # Retrieve the last inserted ID (gameID)
+    cursor.execute("SELECT LAST_INSERT_ID()")
+    last_game_id = cursor.fetchone()[0]  # Fetch the last inserted gameID
+
+    # Store the retrieved gameID in the global variable
+    game_id = last_game_id
+
     # Close database connection
     cursor.close()
     cnx.close()
 
-    # query1 = "SELECT gameID FROM PlayerData WHERE name = %s"
-    # data = (player_name,)
-
-    # cursor.execute(query1, data)
-    # game_id = cursor.fetchone()  # Fetch the gameID
-
-    # # Close database connection
-    # cursor.close()
-    # cnx.close()
-
     # Return a response to the user
-    return "Welcome, " + player_name
+    return "Welcome, " + player_name + " your Game ID is " + str(game_id) + render_template('game.html')
 
 @app.route('/lookup')
 def direct_form():
