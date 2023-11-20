@@ -30,7 +30,7 @@ def howtoplay():
 
 # loads game creation page, for starting a new game or continuing an unfinished game
 @app.route('/pregame')
-def creategame():
+def pregame():
     return render_template('pregame.html')
 
 # Loads the game page, for playing a unique game of Mastermind
