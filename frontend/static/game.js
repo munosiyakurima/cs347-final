@@ -130,9 +130,9 @@ $(document).ready(function(){
             data: $('form').serialize(),
             success: function(response){
                 console.log(response);
-                let cur_row = $('#gameInfo tr').eq(2); // Target the third row
+                let cur_row = $('#gameInfo tr').eq(response.attempts); // Target the third row
                 let cur_cells = cur_row.children('td');
-                $(cur_cells[1]).html(response.red); // Update the second cell
+                $(cur_cells[2]).html("Red: ",response.red,"\nWhite: ", response.white); // Update the hint cell
             },
             error: function(error){
                 console.log(error);
