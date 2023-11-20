@@ -108,10 +108,6 @@ div.home-end {
     color: rgb(0, 0, 0);
 }
 
-.newgame:hover {
-    background-color: rgb(99, 187, 88);
-}
-
 .oldgame:hover {
     background-color: rgb(88, 151, 187);
 }

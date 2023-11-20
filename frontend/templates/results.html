@@ -7,6 +7,7 @@
 {% block content %}
 
     {% if gameState == 1 %}
+
     <div class="results-body">
         <h2>You Won!</h2>
         <p class="results-p">
@@ -18,8 +19,10 @@
         <p>
         Would you like to play again?
         </p>
+        <a class="buttonlink oldgame" href="{{ url_for('pregame') }}">Play Again</a>
     </div>
     {% elif gameState == 2 %}
+
     <div class="results-body">
         <h2>You Lost...</h2>
         <p class="results-p">
@@ -30,6 +33,7 @@
         <p>
         Would you like to try again?
         </p>
+        <a class="buttonlink oldgame" href="{{ url_for('pregame') }}">Try Again</a>
     </div>
     {% endif %}
 {% endblock content %}
