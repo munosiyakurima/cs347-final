@@ -8,7 +8,13 @@ app = Flask(__name__,
         static_folder='static',
         template_folder='templates')
 
-game_id = 0
+game_id = ''
+for i in range(15):
+    game_id += str(random.randint(0, 9))
+
+app.config['SESSION_TYPE'] = 'filesystem'
+
+app.secret_key = game_id
 
 # loads the home page
 @app.route('/')
