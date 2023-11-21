@@ -187,8 +187,10 @@ def lookup():
     cursor.execute(query) 
     cnx.commit()
     for data in cursor:
-        name, gameID, moves, attempts, gameComplete = data[0], data[1], data[2], data[3], data[4]
+        for item in data:
+            output_str = output_str + str(item) + ",   "
+        output_str = output_str + "\n"
 
-    return render_template('player.html', name = name, gameID = gameID, moves = moves, attempts = attempts, gameComplete = gameComplete)
+    return render_template('player.html', output =output_str)
 
 app.run(host='0.0.0.0', port=5500)
