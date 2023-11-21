@@ -186,6 +186,7 @@ def lookup():
     
     cursor.execute(query) 
     cnx.commit()
+    output_str = ""
     for data in cursor:
         for item in data:
             output_str = output_str + str(item) + ",   "
