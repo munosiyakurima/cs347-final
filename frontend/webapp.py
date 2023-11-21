@@ -75,6 +75,22 @@ def update():
     cur_game = game_logic.guess_checker(playerguess)
     if (cur_game['isComplete'] > 0):
         session['data'] = cur_game
+        att = cur_game['attempts']
+        cnx = mysql.connector.connect(user='webapp', password='masterminds1', host='db', database='MasterMinds')
+        cursor = cnx.cursor(buffered=True)
+
+        update_query = "UPDATE PlayerData SET attempts = %s WHERE gameID = %s"
+        finish_query = "UPDATE PlayerData SET gameComplete = %s WHERE gameID = %s"
+
+        cursor.execute(update_query, (att, game_id))
+        cnx.commit()
+
+        cursor.execute(finish_query, (cur_game['isComplete'], game_id))
+        cnx.commit()
+
+        # Close database connection
+        cursor.close()
+        cnx.close()
     return jsonify(cur_game)
  
 # Takes the player's results and displays them    
