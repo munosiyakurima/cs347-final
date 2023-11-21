@@ -6,28 +6,13 @@
 
 {% block content %}
 
-<body>
-    <div class="table-container">
-    <table id="player information">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Game ID</th>
-                <th scope="col">Moves</th>
-				<th scope="col">Attempts</th>
-				<th scope="col">Game Complete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ name }}</td>
-                <td>{{ gameID }}</td>
-                <td>{{ moves }}</td>
-				<td>{{ attempts }}</td>
-				<td>{{ gameComplete }}</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-</body>
+	<body>
+
+	<hr>
+	<p> Name, GameID, Moves, Attempts, GameComplete </p>
+	<hr>
+	{{output}}
+
+	</body>
+
 {% endblock content %}
