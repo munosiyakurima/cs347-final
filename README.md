@@ -23,7 +23,7 @@ We only have two containers:
 4. The link to our game web page is in the frontend container
 
 ## Pregame Page:
-When you click on the "Play Game" tab under navigation, you will be asked to enter your name. Make
+When you click on the "Play" tab under navigation, you will be asked to enter your name. Make
 sure your name DOES NOT include spaces, else the website will return an error
 
 ## Game Hint Explanation:
